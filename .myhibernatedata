@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Tue Dec 29 16:57:24 CST 2015
+genBasicCompId=false
+sessionFactoryName=
+profile=
+daoSFId=
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=native
+genVersionTag=false
+sessionFactoryId=sessionFactory
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/Dragon/hibernate.reveng.xml
+configFile=/Dragon/src/applicationContext.xml
+createConfigFile=true

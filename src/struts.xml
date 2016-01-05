@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 访问时，不需要加.action,无须任何后缀名 -->
+	<constant name="struts.action.extension" value=","></constant>
+
+	<!-- 由Spring来代理控制层 -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="struts2" namespace="/" extends="json-default">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="json"
+				class="org.apache.struts2.json.JSONInterceptor" />
+			<interceptor name="myInterceptor" class="myInterceptor"></interceptor>
+			<interceptor-stack name="myDefult">
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="login" class="userAction" method="login">
+			<result name="none">/Main/login.jsp</result>
+			<result name="success" type="json"><param name="root">result</param></result>
+		</action>
+		
+		<action name="register" class="userAction" method="register">
+			<result name="none">/Main/register.jsp</result>
+			<result name="success" type="json"><param name="root">result</param></result>
+		</action>
+
+	</package>
+</struts>    
