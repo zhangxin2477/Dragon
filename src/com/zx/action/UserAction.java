@@ -124,5 +124,9 @@ public class UserAction extends ActionSupport {
 			return NONE;
 		}
 	}
+	
+	public String index(){
+		return SUCCESS;
+	}
 
 }

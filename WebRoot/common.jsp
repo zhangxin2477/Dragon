@@ -13,11 +13,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="renderer" content="webkit" />
-<link href="<%=basePath%>Main/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
+<link href="<%=basePath%>Main/bootstrap3/css/bootstrap.min.css"
+	rel="stylesheet" />
 <!-- IE 8、9 -->
 <script src="<%=basePath%>Main/js/respond-1.4.2.min.js"></script>
 <script src="<%=basePath%>Main/js/html5shiv-3.7.3.min.js"></script>
 <script src="<%=basePath%>Main/js/jquery-1.11.3.min.js"></script>
 <script src="<%=basePath%>Main/bootstrap3/js/bootstrap.min.js"></script>
-<script src="<%=basePath%>Main/js/layer/layer.js"></script>
+<script src="<%=basePath%>Main/layer/layer.js"></script>
+<script src="<%=basePath%>Main/layer/laypage.js"></script>
 <script src="<%=basePath%>Main/js/IECheck.js"></script>
+<script src="<%=basePath%>Main/js/user.js"></script>
+
+<!-- 默认配置文件 -->
+<script src="<%=basePath%>/Main/ueditor1_4_3/ueditor.config.js"></script>
+<script src="<%=basePath%>/Main/ueditor1_4_3/ueditor.all.min.js"></script>
+<!-- 语言文件 -->
+<script src="<%=basePath%>/Main/ueditor1_4_3/lang/zh-cn/zh-cn.js"></script>
+<!-- 如果需要页面渲染的话引入 -->
+<script src="<%=basePath%>/Main/ueditor1_4_3/ueditor.parse.min.js"></script>

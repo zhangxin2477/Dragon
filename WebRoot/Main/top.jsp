@@ -41,7 +41,7 @@
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
+					<input type="text" class="form-control" placeholder="搜索">
 					<span class="input-group-btn">
 						<button class="btn btn-info" type="button">搜索</button>
 					</span>
