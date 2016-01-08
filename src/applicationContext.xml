@@ -75,6 +75,9 @@
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService" />
 	</bean>
+	<bean id="publishAction" class="com.zx.action.PublishAction" scope="prototype">
+	</bean>
+	
 	<bean id="SUserDAO" class="com.zx.dao.impl.SUserDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />

@@ -5,7 +5,7 @@
 <html>
   <head>
     <title>Error</title>
-    <c:import url="/common.jsp"></c:import>
+    <c:import url="/WEB-INF/web/common.jsp"></c:import>
   </head>
   
   <body class="text-center">

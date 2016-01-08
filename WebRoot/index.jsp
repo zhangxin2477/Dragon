@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,6 +10,6 @@
 </head>
 
 <body>
-	 <% response.sendRedirect("Dragon/Main/main.jsp");%>
+	 <% response.sendRedirect("Dragon/WEB-INF/web/main.jsp");%>
 </body>
 </html>
