@@ -2,5 +2,5 @@
  * 
  */
 $(document).ready(function() {
-	var ue = UM.getEditor('editor',{initialFrameWidth:"100%"});
+	var ue = UE.getEditor('editor',{initialFrameHeight: 400});
 });

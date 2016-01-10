@@ -2,8 +2,6 @@ package com.zx.action;
 
 import java.util.List;
 
-import org.junit.Test;
-
 import net.sf.json.*;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,9 +10,7 @@ import com.zx.entity.User;
 import com.zx.service.UserService;
 
 public class UserAction extends ActionSupport {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -7028181918413153024L;
 	private String result;
 

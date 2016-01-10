@@ -39,9 +39,17 @@
 		<action name="main" class="userAction" method="index">
 			<result name="success">/WEB-INF/web/main.jsp</result>
 		</action>
-		
+
 		<action name="publishBody" class="publishAction" method="PublishInit">
 			<result name="success">/WEB-INF/web/publish.jsp</result>
+		</action>
+		
+		<action name="content" class="contentAction" method="GetContentDetail">
+			<result name="success">/WEB-INF/web/content.jsp</result>
+		</action>
+		
+		<action name="manager" class="managerAction" method="ManagerInit">
+		<result name="success">/WEB-INF/web/manager/manager.jsp</result>
 		</action>
 
 	</package>

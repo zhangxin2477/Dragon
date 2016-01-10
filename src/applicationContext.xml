@@ -52,7 +52,7 @@
 			<tx:method name="del*" propagation="REQUIRED"
 				no-rollback-for="MyException" />
 			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
@@ -65,19 +65,12 @@
 	</aop:config>
 
 
-	<!-- User Service Declaration -->
-	<bean id="userService" class="com.zx.service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao" />
+	<!-- Service Declaration -->
+	<bean id="ThemeDAO" class="com.zx.dao.impl.ThemeDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
 	</bean>
-
-	<!-- User Action Declaration -->
-	<!-- spring管理struts2的Action -->
-	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
-		<property name="userService" ref="userService" />
-	</bean>
-	<bean id="publishAction" class="com.zx.action.PublishAction" scope="prototype">
-	</bean>
-	
 	<bean id="SUserDAO" class="com.zx.dao.impl.SUserDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -88,4 +81,21 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="userService" class="com.zx.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<!-- spring管理struts2的Action -->
+	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="publishAction" class="com.zx.action.PublishAction"
+		scope="prototype">
+	</bean>
+	<bean id="contentAction" class="com.zx.action.ContentAction"
+		scope="prototype">
+	</bean>
+	<bean id="managerAction" class="com.zx.action.ManagerAction"
+		scope="prototype"></bean>
+
 </beans>

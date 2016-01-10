@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
+<c:set value="${pageContext.request.contextPath}" var="path"
+	scope="page" />
 
 <!DOCTYPE html>
 <html>
@@ -78,12 +79,24 @@
 					</div>
 					<div class="panel-body">Panel content</div>
 				</div>
-				
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">信息</h3>
 					</div>
-					<div class="panel-body"><img class="img-thumbnail" alt="" src="${path}/WEB-RES/image/tiaoma.png" /></div>
+					<div class="panel-body">
+						<img class="img-thumbnail" alt=""
+							src="${path}/WEB-RES/image/tiaoma.png" />
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">信息</h3>
+					</div>
+					<div class="panel-body">
+						<img class="img-thumbnail" alt=""
+							src="${path}/WEB-RES/image/my.png" />
+					</div>
 				</div>
 			</div>
 

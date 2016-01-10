@@ -5,7 +5,8 @@ $(document).ready(function() {
 function detectBrowser() {
 	var browser = navigator.appName
 	var b_version = navigator.appVersion
-	var version = b_version.substr(b_version.indexOf('MSIE') + 4, 3).replace(' ', '').replace('.', '')
+	var version = b_version.substr(b_version.indexOf('MSIE') + 4, 3).replace(
+			' ', '').replace('.', '')
 	if (browser == "Microsoft Internet Explorer") {
 		if (version >= 8) {
 			return true;

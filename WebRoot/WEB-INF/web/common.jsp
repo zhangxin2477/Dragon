@@ -24,7 +24,7 @@
 <script src="${path}/WEB-JS/user.js"></script>
 
 <!-- 百度富文本 -->
-<link href="${path}/WEB-PLUGIN/editor/themes/default/css/umeditor.min.css" rel="stylesheet">
+<link href="${path}/WEB-PLUGIN/editor/themes/default/css/ueditor.min.css" rel="stylesheet">
 
-<script src="${path}/WEB-PLUGIN/editor/umeditor.config.js"></script>
-<script src="${path}/WEB-PLUGIN/editor/umeditor.js"></script>
+<script src="${path}/WEB-PLUGIN/editor/ueditor.config.js"></script>
+<script src="${path}/WEB-PLUGIN/editor/ueditor.all.js"></script>
