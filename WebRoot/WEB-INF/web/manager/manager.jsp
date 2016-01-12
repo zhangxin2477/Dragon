@@ -30,9 +30,30 @@
 					</div>
 					<div class="panel-body" style="padding:0px;">
 						<div class="list-group" style="margin-bottom:0px;">
-							<a href="#" class="list-group-item active">主题管理</a> <a href="#"
-								class="list-group-item">菜单管理</a> <a href="#"
-								class="list-group-item">用户管理</a>
+							<c:choose>
+								<c:when test="${param.menu=='1'}">
+									<a href="?menu=1" class="list-group-item active">主题管理</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=1" class="list-group-item">主题管理</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${param.menu=='2'}">
+									<a href="?menu=2" class="list-group-item active">菜单管理</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=2" class="list-group-item">菜单管理</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${param.menu=='3'}">
+									<a href="?menu=3" class="list-group-item active">用户管理</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=3" class="list-group-item">用户管理</a>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -43,9 +64,30 @@
 					</div>
 					<div class="panel-body" style="padding:0px;">
 						<div class="list-group" style="margin-bottom:0px;">
-							<a href="#" class="list-group-item active">用户管理</a> <a href="#"
-								class="list-group-item">内容管理</a> <a href="#"
-								class="list-group-item">评论管理</a>
+							<c:choose>
+								<c:when test="${param.menu=='4'}">
+									<a href="?menu=4" class="list-group-item active">用户信息</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=4" class="list-group-item">用户信息</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${param.menu=='5'}">
+									<a href="?menu=5" class="list-group-item active">内容管理</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=5" class="list-group-item">内容管理</a>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${param.menu=='6'}">
+									<a href="?menu=6" class="list-group-item active">评论管理</a>
+								</c:when>
+								<c:otherwise>
+									<a href="?menu=6" class="list-group-item">评论管理</a>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -66,6 +108,9 @@
 				</c:if>
 				<c:if test="${param.menu == '2'}">
 					<c:import url="/WEB-INF/web/manager/directory.jsp"></c:import>
+				</c:if>
+				<c:if test="${param.menu == '5'}">
+					<c:import url="/WEB-INF/web/manager/body.jsp"></c:import>
 				</c:if>
 
 			</div>

@@ -10,6 +10,6 @@
 </head>
 
 <body>
-	 <% response.sendRedirect("Dragon/WEB-INF/web/main.jsp");%>
+	 <% response.sendRedirect("main");%>
 </body>
 </html>
