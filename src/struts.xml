@@ -40,7 +40,7 @@
 			<result name="success">/WEB-INF/web/main.jsp</result>
 		</action>
 
-		<action name="publishBody" class="publishAction" method="PublishInit">
+		<action name="publish" class="publishAction" method="PublishInit">
 			<result name="success">/WEB-INF/web/publish.jsp</result>
 		</action>
 		

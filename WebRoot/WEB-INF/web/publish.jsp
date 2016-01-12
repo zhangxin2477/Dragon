@@ -8,14 +8,14 @@
 <html>
 <head>
 <title>发布内容</title>
-<c:import url="/WEB-INF/web/common.jsp" />
+<c:import url="/WEB-INF/web/common/common.jsp" />
 <link href="${path}/WEB-CSS/publish.css" rel="stylesheet" />
 <script src="${path}/WEB-JS/publish.js" type="text/javascript"></script>
 </head>
 
 <body>
 
-	<c:import url="/WEB-INF/web/top.jsp" />
+	<c:import url="/WEB-INF/web/common/top.jsp" />
 
 	<div class="container">
 		<ol class="breadcrumb">
@@ -50,6 +50,6 @@
 		</div>
 	</div>
 
-	<c:import url="/WEB-INF/web/bottom.jsp" />
+	<c:import url="/WEB-INF/web/common/bottom.jsp" />
 </body>
 </html>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>首页</title>
-<c:import url="/WEB-INF/web/common.jsp" />
+<c:import url="/WEB-INF/web/common/common.jsp" />
 
 <link href="${path}/WEB-CSS/main.css" rel="stylesheet" />
 <link href="${path}/WEB-CSS/offcanvas.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<c:import url="/WEB-INF/web/top.jsp" />
+	<c:import url="/WEB-INF/web/common/top.jsp" />
 
 	<div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
@@ -39,7 +39,7 @@
 										<td><a href="#"><img
 												class="img-circle image_size_small" alt="Brand"
 												src="${path}/WEB-RES/image/default.png" /></a></td>
-										<td style="padding-left:15px;"><a href="#"
+										<td style="padding-left:15px;"><a href="content"
 											class="list-group-item-heading" style="font-size:20px;">${s}0000000</a>
 											<ol class="list-group-item-text breadcrumb"
 												style="background-color:#FFFFFF">
@@ -62,7 +62,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar"
 				style="margin-top:15px;margin-bottom:15px;">
 				<div class="list-group">
-					<a href="#" class="list-group-item active text-center">发表</a>
+					<a href="publish" class="list-group-item active text-center">发表</a>
 				</div>
 
 				<div class="panel panel-primary">
@@ -104,6 +104,6 @@
 	</div>
 
 	<script src="${path}/WEB-JS/main.js"></script>
-	<c:import url="/WEB-INF/web/bottom.jsp"></c:import>
+	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>
 </body>
 </html>

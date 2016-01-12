@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>详细内容</title>
-<c:import url="/WEB-INF/web/common.jsp" />
+<c:import url="/WEB-INF/web/common/common.jsp" />
 
 <link href="${path}/WEB-CSS/content.css" rel="stylesheet" />
 <link href="${path}/WEB-CSS/offcanvas.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<c:import url="/WEB-INF/web/top.jsp" />
+	<c:import url="/WEB-INF/web/common/top.jsp" />
 
 	<div class="container">
 		<ol class="breadcrumb">
@@ -80,6 +80,6 @@
 	</div>
 
 	<script src="${path}/WEB-JS/content.js"></script>
-	<c:import url="/WEB-INF/web/bottom.jsp"></c:import>
+	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>
 </body>
 </html>

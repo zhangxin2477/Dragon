@@ -6,27 +6,29 @@
 
 <div class="panel panel-default">
 	<!-- Default panel contents -->
-	<div class="panel-heading">主题管理</div>
+	<div class="panel-heading">菜单管理</div>
 	<div class="panel-body">
 		<div class="text-right">
-			<button id="add" type="button" class="btn btn-primary">新增</button>
-			<button id="edit" type="button" class="btn btn-primary">修改</button>
-			<button id="delete" type="button" class="btn btn-primary">删除</button>
+			<button id="add-par" type="button" class="btn btn-primary">新增父菜单</button>
+			<button id="edit-par" type="button" class="btn btn-primary">修改</button>
+			<button id="delete-par" type="button" class="btn btn-primary">删除</button>
 		</div>
 		<br>
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th>序号</th>
-					<th>主题名称</th>
-					<th>序列号</th>
+					<th>父菜单</th>
+					<th>子菜单</th>
+					<th>主题</th>
 					<th style="display:none;">选择</th>
 				</tr>
 			</thead>
-			<tbody id="theme">
+			<tbody id="directory-par">
 				<c:forEach var="s" begin="1" end="5">
-					<tr onclick="sel(this)">
+					<tr onclick="selPar(this)">
 						<th scope="row">${s}</th>
+						<td>XX</td>
 						<td>XX</td>
 						<td>XX</td>
 						<td style="display:none;">0</td>
@@ -38,4 +40,4 @@
 	</div>
 </div>
 
-<script src="${path}/WEB-JS/manager/theme.js"></script>
+<script src="${path}/WEB-JS/manager/directory_par.js"></script>

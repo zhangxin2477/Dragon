@@ -8,8 +8,13 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading">内容管理</div>
 	<div class="panel-body">
+		<div class="text-right">
+			<button id="add" type="button" class="btn btn-primary">新增</button>
+			<button id="edit" type="button" class="btn btn-primary">修改</button>
+			<button id="delete" type="button" class="btn btn-primary">删除</button>
+		</div>
+		<br>
 		<table class="table table-bordered table-hover">
-			<caption>管理发布内容！</caption>
 			<thead>
 				<tr>
 					<th style="display:none;">选择</th>
@@ -39,9 +44,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<button id="add" type="button" class="btn btn-primary">新增</button>
-		<button id="edit" type="button" class="btn btn-primary">修改</button>
-		<button id="delete" type="button" class="btn btn-primary">删除</button>
+		<div class="page" style="text-align:center;"></div>
 	</div>
 </div>
 

@@ -1,11 +1,11 @@
-function sel(tr) {
-	var tb = document.getElementById('theme');
+function selSub(tr) {
+	var tb = document.getElementById('directory-sub');
 	for (var i = 0; i < tb.rows.length; i++) {
 		tb.rows[i].style.backgroundColor = "#ffffff";
-		tb.rows[i].cells[3].innerText = 0;
+		tb.rows[i].cells[2].innerText = 0;
 	}
 	tr.style.backgroundColor = "#dff0d8";
-	tr.cells[3].innerText = 1;
+	tr.cells[2].innerText = 1;
 }
 
 laypage({
@@ -24,14 +24,14 @@ laypage({
 	}
 });
 
-$('#add')
+$('#add-sub')
 		.click(
 				function() {
 					layer
 							.open({
 								type : 1, // page层
-								area : [ '50%', '200px' ],
-								title : '新增主题',
+								area : [ '50%', '150px' ],
+								title : '新增子菜单',
 								shade : 0.6, // 遮罩透明度
 								moveType : 1, // 拖拽风格，0是默认，1是传统拖动
 								shift : 1, // 0-6的动画形式，-1不开启
@@ -42,18 +42,17 @@ $('#add')
 								btn2 : function() {
 									layer.close();
 								},
-								content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>主题名称</span><input type='text' class='form-control' placeholder='主题名称' aria-describedby='basic-addon1'></div><br>"
-										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>序列编号</span><input type='text' class='form-control' placeholder='序列编号' aria-describedby='basic-addon1'></div></div>"
+								content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>子菜单名称</span><input type='text' class='form-control' placeholder='子菜单名称' aria-describedby='basic-addon1'></div></div>"
 							});
 				})
 
-$('#edit')
+$('#edit-sub')
 		.click(
 				function() {
 					var re = -1;
-					var tb = document.getElementById('theme');
+					var tb = document.getElementById('directory-sub');
 					for (var i = 0; i < tb.rows.length; i++) {
-						if (tb.rows[i].cells[3].innerText.indexOf('1') >= 0) {
+						if (tb.rows[i].cells[2].innerText.indexOf('1') >= 0) {
 							re = i + 1;
 						}
 					}
@@ -61,8 +60,8 @@ $('#edit')
 						layer
 								.open({
 									type : 1, // page层
-									area : [ '50%', '200px' ],
-									title : '修改主题',
+									area : [ '50%', '150px' ],
+									title : '修改子菜单',
 									shade : 0.6, // 遮罩透明度
 									moveType : 1, // 拖拽风格，0是默认，1是传统拖动
 									shift : 1, // 0-6的动画形式，-1不开启
@@ -73,19 +72,18 @@ $('#edit')
 									btn2 : function() {
 										layer.close();
 									},
-									content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>主题名称</span><input type='text' class='form-control' placeholder='主题名称' aria-describedby='basic-addon1'></div><br>"
-											+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>序列编号</span><input type='text' class='form-control' placeholder='序列编号' aria-describedby='basic-addon1'></div></div>"
+									content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>子菜单名称</span><input type='text' class='form-control' placeholder='子菜单名称' aria-describedby='basic-addon1'></div></div>"
 								});
 					} else {
 						layer.msg("选择不能为空！");
 					}
 				})
 
-$('#delete').click(function() {
+$('#delete-sub').click(function() {
 	var re = -1;
-	var tb = document.getElementById('theme');
+	var tb = document.getElementById('directory-sub');
 	for (var i = 0; i < tb.rows.length; i++) {
-		if (tb.rows[i].cells[3].innerText.indexOf('1') >= 0) {
+		if (tb.rows[i].cells[2].innerText.indexOf('1') >= 0) {
 			re = i + 1;
 		}
 	}

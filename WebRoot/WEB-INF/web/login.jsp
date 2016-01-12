@@ -7,13 +7,13 @@
 <html>
 <head>
 <title>登录</title>
-<c:import url="/WEB-INF/web/common.jsp"></c:import>
+<c:import url="/WEB-INF/web/common/common.jsp"></c:import>
 <link href="${path}/WEB-CSS/login.css" rel="stylesheet" />
 <script src="${path}/WEB-JS/user.js"></script>
 </head>
 
 <body>
-	<c:import url="/WEB-INF/web/top.jsp"></c:import>
+	<c:import url="/WEB-INF/web/common/top.jsp"></c:import>
 	<br>
 	<br>
 	<br>
@@ -46,6 +46,6 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="/WEB-INF/web/bottom.jsp"></c:import>
+	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>
 </body>
 </html>
