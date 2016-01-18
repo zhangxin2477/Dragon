@@ -1,22 +1,3 @@
-function login() {
-	var host = window.location.host;
-	if (window.location.pathname.indexOf("Dragon") > 0) {
-		window.location.href = "http://" + host + "/Dragon/login";
-	} else {
-		window.location.href = "http://" + host + "/login";
-	}
-
-}
-
-function register() {
-	var host = window.location.host;
-	if (window.location.pathname.indexOf("Dragon") > 0) {
-		window.location.href = "http://" + host + "/Dragon/register";
-	} else {
-		window.location.href = "http://" + host + "/register";
-	}
-}
-
 function login_check() {
 	var params = $("form").serialize();
 	$.ajax({

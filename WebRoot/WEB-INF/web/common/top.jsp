@@ -43,8 +43,8 @@
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="javascript:register()">注册</a></li>
-				<li><a href="javascript:login()">登录</a></li>
+				<li><a href="register">注册</a></li>
+				<li><a href="login">登录</a></li>
 			</ul>
 		</div>
 	</div>

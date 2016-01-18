@@ -9,7 +9,7 @@
 <title>注册</title>
 <c:import url="/WEB-INF/web/common/common.jsp"></c:import>
 <link href="${path}/WEB-CSS/login.css" rel="stylesheet" />
-<script src="${path}/WEB-JS/user.js"></script>
+<script src="${path}/WEB-JS/user/user.js"></script>
 </head>
 
 <body>

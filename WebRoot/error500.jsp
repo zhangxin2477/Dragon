@@ -5,7 +5,7 @@
 <html style="height:100%;">
 <head>
 <title>Error</title>
-<c:import url="/WEB-INF/web/common.jsp"></c:import>
+<c:import url="/WEB-INF/web/common/common.jsp"></c:import>
 </head>
 
 <body class="text-center" style="height:100%;">
@@ -13,6 +13,6 @@
 	<h1 style="height:25%;">
 		<span class="label label-default">500</span>
 	</h1>
-	<c:import url="/WEB-INF/web/bottom.jsp"></c:import>
+	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>
 </body>
 </html>

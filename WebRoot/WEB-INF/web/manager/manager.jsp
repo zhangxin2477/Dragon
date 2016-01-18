@@ -12,6 +12,7 @@
 
 <link href="${path}/WEB-CSS/content.css" rel="stylesheet" />
 <link href="${path}/WEB-CSS/offcanvas.css" rel="stylesheet" />
+<link href="${path}/WEB-CSS/user_info.css" rel="stylesheet"/>
 
 </head>
 
@@ -108,7 +109,7 @@
 				</p>
 
 				<div class="page-header">
-					<h1>广告(●'◡'●)</h1>
+					<h1>(●'◡'●)</h1>
 				</div>
 
 				<c:if test="${param.menu == '1'}">
@@ -124,7 +125,7 @@
 					<c:import url="/WEB-INF/web/manager/user_list.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '5' }">
-				<c:import url="/WEB-INF/web/user_info.jsp"></c:import>
+				<c:import url="/WEB-INF/web/user/user_info.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '6'}">
 					<c:import url="/WEB-INF/web/manager/body.jsp"></c:import>

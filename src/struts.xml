@@ -23,14 +23,14 @@
 		</interceptors>
 
 		<action name="login" class="userAction" method="login">
-			<result name="none">/WEB-INF/web/login.jsp</result>
+			<result name="none">/WEB-INF/web/user/login.jsp</result>
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
 
 		<action name="register" class="userAction" method="register">
-			<result name="none">/WEB-INF/web/register.jsp</result>
+			<result name="none">/WEB-INF/web/user/register.jsp</result>
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>

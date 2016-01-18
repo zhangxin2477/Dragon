@@ -14,17 +14,20 @@
 <link href="${path}/WEB-PLUGIN/bootstrap3/css/bootstrap.min.css"
 	rel="stylesheet" />
 <!-- IE 8、9 -->
-<script src="${path}/WEB-JS/respond-1.4.2.min.js"></script>
-<script src="${path}/WEB-JS/html5shiv-3.7.3.min.js"></script>
-<script src="${path}/WEB-JS/jquery-1.11.3.min.js"></script>
+<script src="${path}/WEB-JS/common/respond-1.4.2.min.js"></script>
+<script src="${path}/WEB-JS/common/html5shiv-3.7.3.min.js"></script>
+<script src="${path}/WEB-JS/common/jquery-1.11.3.min.js"></script>
 <script src="${path}/WEB-PLUGIN/bootstrap3/js/bootstrap.min.js"></script>
 <script src="${path}/WEB-PLUGIN/layer/layer.js"></script>
 <script src="${path}/WEB-PLUGIN/layer/laypage.js"></script>
-<script src="${path}/WEB-JS/IECheck.js"></script>
-<script src="${path}/WEB-JS/user.js"></script>
+<script src="${path}/WEB-JS/common/IECheck.js"></script>
+<script src="${path}/WEB-JS/user/user.js"></script>
 
 <!-- 百度富文本 -->
 <link href="${path}/WEB-PLUGIN/editor/themes/default/css/ueditor.min.css" rel="stylesheet">
 
 <script src="${path}/WEB-PLUGIN/editor/ueditor.config.js"></script>
 <script src="${path}/WEB-PLUGIN/editor/ueditor.all.js"></script>
+
+<!-- 地区 -->
+<script src="${path}/WEB-PLUGIN/city/area.js"></script>
