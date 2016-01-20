@@ -12,7 +12,7 @@
 
 <link href="${path}/WEB-CSS/content.css" rel="stylesheet" />
 <link href="${path}/WEB-CSS/offcanvas.css" rel="stylesheet" />
-<link href="${path}/WEB-CSS/user_info.css" rel="stylesheet"/>
+<link href="${path}/WEB-CSS/user_info.css" rel="stylesheet" />
 
 </head>
 
@@ -25,7 +25,7 @@
 			<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar"
 				style="margin-bottom:15px;">
 
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">平台信息</h3>
 					</div>
@@ -67,7 +67,7 @@
 					</div>
 				</div>
 
-				<div class="panel panel-default">
+				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">基本信息</h3>
 					</div>
@@ -100,6 +100,18 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">高级信息</h3>
+					</div>
+					<div class="panel-body" style="padding:0px;">
+						<div class="list-group" style="margin-bottom:0px;">
+							<a href="?menu=8" class="list-group-item">拓展中...</a>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<!-- 内容 -->
 			<div class="col-xs-12 col-sm-9">
@@ -125,13 +137,13 @@
 					<c:import url="/WEB-INF/web/manager/user_list.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '5' }">
-				<c:import url="/WEB-INF/web/user/user_info.jsp"></c:import>
+					<c:import url="/WEB-INF/web/user/user_info.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '6'}">
 					<c:import url="/WEB-INF/web/manager/article.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '7' }">
-				<c:import url="/WEB-INF/web/manager/comment.jsp"></c:import>
+					<c:import url="/WEB-INF/web/manager/comment.jsp"></c:import>
 				</c:if>
 			</div>
 		</div>

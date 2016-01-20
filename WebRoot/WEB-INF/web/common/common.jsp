@@ -31,3 +31,11 @@
 
 <!-- 地区 -->
 <script src="${path}/WEB-PLUGIN/city/area.js"></script>
+
+
+<!-- 时间轴 -->
+<link rel="stylesheet" type="text/css" href="${path}/WEB-PLUGIN/timeaxis/css/history.css">
+<script type="text/javascript" src="${path}/WEB-PLUGIN/timeaxis/js/jquery.js"></script>
+<script type="text/javascript" src="${path}/WEB-PLUGIN/timeaxis/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="${path}/WEB-PLUGIN/timeaxis/js/jquery.easing.js"></script>
+<script type="text/javascript" src="${path}/WEB-PLUGIN/timeaxis/js/history.js"></script>
