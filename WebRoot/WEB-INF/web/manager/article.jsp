@@ -9,8 +9,8 @@
 	<div class="panel-heading">内容管理</div>
 	<div class="panel-body">
 		<div class="text-right">
-			<button id="add" type="button" class="btn btn-primary">新增</button>
-			<button id="edit" type="button" class="btn btn-primary">修改</button>
+			<button id="enable" type="button" class="btn btn-primary">启用</button>
+			<button id="disable" type="button" class="btn btn-danger">禁用</button>
 			<button id="delete" type="button" class="btn btn-primary">删除</button>
 		</div>
 		<br>
@@ -23,6 +23,7 @@
 					<th>所属菜单</th>
 					<th>发布时间</th>
 					<th>更新时间</th>
+					<th>被赞次数</th>
 					<th>阅读量</th>
 					<th>属性</th>
 					<th>状态</th>
@@ -35,11 +36,12 @@
 						<th scope="row">${s}</th>
 						<td>XX</td>
 						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
+						<td>2016年1月20日 15:23:45</td>
+						<td>2016年1月20日 15:23:39</td>
+						<td>0</td>
+						<td>0</td>
+						<td>私有</td>
+						<td>未发布</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -48,4 +50,4 @@
 	</div>
 </div>
 
-<script src="${path}/WEB-JS/manager/body.js"></script>
+<script src="${path}/WEB-JS/manager/article.js"></script>

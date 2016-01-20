@@ -11,7 +11,7 @@
 			<tr>
 				<td class="user_table_left">登录名：</td>
 				<td><input type="text" class="form-control" placeholder="登录名"
-					style="height:27px;" /></td>
+					style="height:27px;" disabled /></td>
 			</tr>
 			<tr>
 				<td class="user_table_left">昵称：</td>
@@ -34,33 +34,11 @@
 			</tr>
 			<tr>
 				<td class="user_table_left">生日：</td>
-				<td>XX</td>
+				<td><c:import url="/WEB-INF/web/common/birthday.jsp"></c:import></td>
 			</tr>
 			<tr>
 				<td class="user_table_left">所在地：</td>
-				<td><div class="info">
-						<div>
-							<select id="s_province" name="s_province"></select>   <select
-								id="s_city" name="s_city"></select>   <select id="s_county"
-								name="s_county"></select>
-							<script class="resources library" src="area.js"
-								type="text/javascript"></script>
-
-							<script type="text/javascript">
-								_init_area();
-							</script>
-						</div>
-						<div id="show"></div>
-					</div> <script type="text/javascript">
-						var Gid = document.getElementById;
-						var showArea = function() {
-							Gid('show').innerHTML = "<h3>省"
-									+ Gid('s_province').value + " - 市"
-									+ Gid('s_city').value + " - 县/区"
-									+ Gid('s_county').value + "</h3>"
-						}
-						Gid('s_county').setAttribute('onchange', 'showArea()');
-					</script></td>
+				<td><c:import url="/WEB-INF/web/common/area.jsp"></c:import></td>
 			</tr>
 			<tr>
 				<td class="user_table_left">邮箱：</td>

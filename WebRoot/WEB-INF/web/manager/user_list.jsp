@@ -21,14 +21,16 @@
 					<th>序号</th>
 					<th>账号</th>
 					<th>昵称</th>
+					<th>主题</th>
 					<th>类型</th>
 				</tr>
 			</thead>
-			<tbody id="body_list">
+			<tbody id="user_list">
 				<c:forEach var="s" begin="1" end="5">
-					<tr onclick="sel(this)">
+					<tr onclick="selUser(this)">
 						<td style="display:none;">0</td>
-						<th scope="row">${s}</th>
+						<td scope="row">${s}</td>
+						<td>XX</td>
 						<td>XX</td>
 						<td>XX</td>
 						<td>XX</td>

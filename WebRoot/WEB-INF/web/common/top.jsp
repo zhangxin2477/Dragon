@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
+<c:set value="${pageContext.request.contextPath}" var="path"
+	scope="page" />
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
@@ -36,13 +37,14 @@
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group input-group">
-					<input type="text" class="form-control" placeholder="搜索">
-					<span class="input-group-btn">
+					<input type="text" class="form-control" placeholder="搜索"> <span
+						class="input-group-btn">
 						<button class="btn btn-info" type="button">搜索</button>
 					</span>
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="manager">设置</a></li>
 				<li><a href="register">注册</a></li>
 				<li><a href="login">登录</a></li>
 			</ul>

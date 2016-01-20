@@ -128,7 +128,7 @@
 				<c:import url="/WEB-INF/web/user/user_info.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '6'}">
-					<c:import url="/WEB-INF/web/manager/body.jsp"></c:import>
+					<c:import url="/WEB-INF/web/manager/article.jsp"></c:import>
 				</c:if>
 				<c:if test="${param.menu == '7' }">
 				<c:import url="/WEB-INF/web/manager/comment.jsp"></c:import>

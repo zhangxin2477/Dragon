@@ -29,7 +29,7 @@
 						<th scope="row">${s}</th>
 						<td>XX</td>
 						<td>XX</td>
-						<td>XX</td>
+						<td>2016年1月20日 15:24:57</td>
 					</tr>
 				</c:forEach>
 			</tbody>
