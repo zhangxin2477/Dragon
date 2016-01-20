@@ -145,6 +145,9 @@
 				<c:if test="${param.menu == '7' }">
 					<c:import url="/WEB-INF/web/manager/comment.jsp"></c:import>
 				</c:if>
+				<c:if test="${param.menu == null }">
+					<c:import url="/WEB-INF/web/manager/timeaxis.jsp"></c:import>
+				</c:if>
 			</div>
 		</div>
 	</div>
