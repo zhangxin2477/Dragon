@@ -21,7 +21,6 @@
 <script src="${path}/WEB-PLUGIN/layer/layer.js"></script>
 <script src="${path}/WEB-PLUGIN/layer/laypage.js"></script>
 <script src="${path}/WEB-JS/common/IECheck.js"></script>
-<script src="${path}/WEB-JS/user/user.js"></script>
 
 <!-- 百度富文本 -->
 <link href="${path}/WEB-PLUGIN/editor/themes/default/css/ueditor.min.css" rel="stylesheet">

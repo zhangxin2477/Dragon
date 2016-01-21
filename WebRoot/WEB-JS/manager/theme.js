@@ -2,10 +2,10 @@ function sel(tr) {
 	var tb = document.getElementById('theme');
 	for (var i = 0; i < tb.rows.length; i++) {
 		tb.rows[i].style.backgroundColor = "#ffffff";
-		tb.rows[i].cells[3].innerText = 0;
+		tb.rows[i].cells[0].innerText = 0;
 	}
 	tr.style.backgroundColor = "#dff0d8";
-	tr.cells[3].innerText = 1;
+	tr.cells[0].innerText = 1;
 }
 
 laypage({
@@ -20,7 +20,7 @@ laypage({
 	next : '下一页', // 若不显示，设置false即可
 	hash : true, // 开启hash
 	jump : function(obj) { // 触发分页后的回调
-		
+
 	}
 });
 
@@ -30,20 +30,35 @@ $('#add')
 					layer
 							.open({
 								type : 1, // page层
-								area : [ '50%', '200px' ],
+								area : [ '50%', '260px' ],
 								title : '新增主题',
 								shade : 0.6, // 遮罩透明度
 								moveType : 1, // 拖拽风格，0是默认，1是传统拖动
 								shift : 1, // 0-6的动画形式，-1不开启
-								btn : [ '保存', '关闭' ],
+								btn : [ '注册', '关闭' ],
 								yes : function() {
-									layer.msg('保存');
+									var params = $("form").serialize();
+									$.ajax({
+										type : "POST",
+										async : true,
+										url : "addTheme",
+										data : params,
+										dataType : "json",
+										success : function(data) {
+											layer.msg("注册成功！" + data);
+										},
+										error : function(XMLHttpRequest, textStatus, errorThrown) {
+											layer.msg("注册失败！");
+											return false;
+										}
+									});
 								},
 								btn2 : function() {
 									layer.close();
 								},
-								content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>主题名称</span><input type='text' class='form-control' placeholder='主题名称' aria-describedby='basic-addon1'></div><br>"
-										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>序列编号</span><input type='text' class='form-control' placeholder='序列编号' aria-describedby='basic-addon1'></div></div>"
+								content : "<form style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>中文名称</span><input name='theme.nameCn' type='text' class='form-control' placeholder='中文名称' aria-describedby='basic-addon1'></div><br>"
+										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>英文名称</span><input name='theme.nameEn' type='text' class='form-control' placeholder='英文名称' aria-describedby='basic-addon1'></div><br>"
+										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>注册码</span><input name='theme.key' type='text' class='form-control' placeholder='注册码' aria-describedby='basic-addon1'></div></form>"
 							});
 				})
 
@@ -53,7 +68,7 @@ $('#edit')
 					var re = -1;
 					var tb = document.getElementById('theme');
 					for (var i = 0; i < tb.rows.length; i++) {
-						if (tb.rows[i].cells[3].innerText.indexOf('1') >= 0) {
+						if (tb.rows[i].cells[0].innerText.indexOf('1') >= 0) {
 							re = i + 1;
 						}
 					}
@@ -66,15 +81,15 @@ $('#edit')
 									shade : 0.6, // 遮罩透明度
 									moveType : 1, // 拖拽风格，0是默认，1是传统拖动
 									shift : 1, // 0-6的动画形式，-1不开启
-									btn : [ '保存', '关闭' ],
+									btn : [ '修改', '关闭' ],
 									yes : function() {
-										layer.msg('保存');
+										layer.msg('修改成功');
 									},
 									btn2 : function() {
 										layer.close();
 									},
-									content : "<div style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>主题名称</span><input type='text' class='form-control' placeholder='主题名称' aria-describedby='basic-addon1'></div><br>"
-											+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>序列编号</span><input type='text' class='form-control' placeholder='序列编号' aria-describedby='basic-addon1'></div></div>"
+									content : "<form style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>中文名称</span><input type='text' class='form-control' placeholder='中文名称' aria-describedby='basic-addon1'></div><br>"
+											+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>英文名称</span><input type='text' class='form-control' placeholder='英文名称' aria-describedby='basic-addon1'></div></form>"
 								});
 					} else {
 						layer.msg("选择不能为空！");
@@ -85,7 +100,7 @@ $('#delete').click(function() {
 	var re = -1;
 	var tb = document.getElementById('theme');
 	for (var i = 0; i < tb.rows.length; i++) {
-		if (tb.rows[i].cells[3].innerText.indexOf('1') >= 0) {
+		if (tb.rows[i].cells[0].innerText.indexOf('1') >= 0) {
 			re = i + 1;
 		}
 	}

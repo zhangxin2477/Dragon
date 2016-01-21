@@ -2,7 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<!-- 访问时，不需要加.action,无须任何后缀名 -->
-	<constant name="struts.action.extension" value=","></constant>
+	<constant name="struts.action.extension" value=","/>
 
 	<!-- 由Spring来代理控制层 -->
 	<constant name="struts.objectFactory" value="spring" />
@@ -15,25 +15,27 @@
 		<interceptors>
 			<interceptor name="json"
 				class="org.apache.struts2.json.JSONInterceptor" />
-			<interceptor name="myInterceptor" class="myInterceptor"></interceptor>
+			<interceptor name="myInterceptor" class="myInterceptor"/>
 			<interceptor-stack name="myDefult">
-				<interceptor-ref name="myInterceptor"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
 			</interceptor-stack>
 		</interceptors>
 
+		<action name="addtheme" class="themeAction" method="add1">
+			<result name="none" type="json"></result>
+			<result name="error" type="json"></result>
+			<result name="success" type="json"></result>
+		</action>
+
 		<action name="login" class="userAction" method="login">
 			<result name="none">/WEB-INF/web/user/login.jsp</result>
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
+			<result name="success" type="json">result</result>
 		</action>
 
 		<action name="register" class="userAction" method="register">
 			<result name="none">/WEB-INF/web/user/register.jsp</result>
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
+			<result name="success" type="json">result</result>
 		</action>
 
 		<action name="main" class="userAction" method="index">
@@ -43,13 +45,13 @@
 		<action name="publish" class="publishAction" method="PublishInit">
 			<result name="success">/WEB-INF/web/publish.jsp</result>
 		</action>
-		
+
 		<action name="content" class="contentAction" method="GetContentDetail">
 			<result name="success">/WEB-INF/web/content.jsp</result>
 		</action>
-		
+
 		<action name="manager" class="managerAction" method="ManagerInit">
-		<result name="success">/WEB-INF/web/manager/manager.jsp</result>
+			<result name="success">/WEB-INF/web/manager/manager.jsp</result>
 		</action>
 
 	</package>

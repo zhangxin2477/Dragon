@@ -9,8 +9,8 @@
 </head>
 
 <body class="text-center" style="height:100%;">
-	<c:import url="/WEB-INF/web/top.jsp" />
-	<h1 style="height:25%;">
+	<c:import url="/WEB-INF/web/common/top.jsp" />
+	<h1 style="padding-top:25%;">
 		<span class="label label-default">500</span>
 	</h1>
 	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>

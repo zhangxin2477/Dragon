@@ -9,7 +9,7 @@
 <title>注册</title>
 <c:import url="/WEB-INF/web/common/common.jsp"></c:import>
 <link href="${path}/WEB-CSS/login.css" rel="stylesheet" />
-<script src="${path}/WEB-JS/user/user.js"></script>
+<script src="${path}/WEB-JS/user/register.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 					</div>
 					<br>
 					<button class="btn btn-lg btn-primary btn-block" type="button"
-						onclick="javascript:register_check()">注册</button>
+						onclick="register_check()">注册</button>
 				</form>
 			</div>
 		</div>

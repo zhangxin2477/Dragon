@@ -28,10 +28,12 @@ import com.zx.entity.Theme;
  */
 @Transactional
 public class ThemeDaoImpl implements ThemeDao {
-	private static final Logger log = LoggerFactory.getLogger(ThemeDaoImpl.class);
+	private static final Logger log = LoggerFactory
+			.getLogger(ThemeDaoImpl.class);
 	// property constants
-	public static final String NAME = "name";
-	public static final String CODE = "code";
+	public static final String NAME_EN = "nameEn";
+	public static final String NAME_CN = "nameCn";
+	public static final String KEY = "key";
 
 	private SessionFactory sessionFactory;
 
@@ -81,10 +83,10 @@ public class ThemeDaoImpl implements ThemeDao {
 		}
 	}
 
-	public List findByExample(Theme instance) {
+	public List<?> findByExample(Theme instance) {
 		log.debug("finding Theme instance by example");
 		try {
-			List results = getCurrentSession()
+			List<?> results = getCurrentSession()
 					.createCriteria("com.zx.entity.Theme")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
@@ -96,7 +98,7 @@ public class ThemeDaoImpl implements ThemeDao {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<?> findByProperty(String propertyName, Object value) {
 		log.debug("finding Theme instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -111,15 +113,19 @@ public class ThemeDaoImpl implements ThemeDao {
 		}
 	}
 
-	public List findByName(Object name) {
-		return findByProperty(NAME, name);
+	public List<?> findByNameEn(Object nameEn) {
+		return findByProperty(NAME_EN, nameEn);
 	}
 
-	public List findByCode(Object code) {
-		return findByProperty(CODE, code);
+	public List<?> findByNameCn(Object nameCn) {
+		return findByProperty(NAME_CN, nameCn);
 	}
 
-	public List findAll() {
+	public List<?> findByKey(Object key) {
+		return findByProperty(KEY, key);
+	}
+
+	public List<?> findAll() {
 		log.debug("finding all Theme instances");
 		try {
 			String queryString = "from Theme";
@@ -167,6 +173,30 @@ public class ThemeDaoImpl implements ThemeDao {
 	}
 
 	public static ThemeDaoImpl getFromApplicationContext(ApplicationContext ctx) {
-		return (ThemeDaoImpl) ctx.getBean("ThemeDAO");
+		return (ThemeDaoImpl) ctx.getBean("themeDao");
+	}
+
+	@Override
+	public boolean addTheme(Theme theme) {
+		// TODO Auto-generated method stub
+		try {
+			getCurrentSession().save(theme);
+			return true;
+		} catch (RuntimeException re) {
+			System.out.println(re.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	public List<?> getTheme(Theme theme) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteTheme(Theme theme) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

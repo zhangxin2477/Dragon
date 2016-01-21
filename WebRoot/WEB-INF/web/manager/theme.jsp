@@ -17,19 +17,21 @@
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>序号</th>
-					<th>主题名称</th>
-					<th>序列号</th>
 					<th style="display:none;">选择</th>
+					<th>序号</th>
+					<th>中文名称</th>
+					<th>英文名称</th>
+					<th>密钥</th>
 				</tr>
 			</thead>
 			<tbody id="theme">
 				<c:forEach var="s" begin="1" end="5">
 					<tr onclick="sel(this)">
+						<td style="display:none;">0</td>
 						<th scope="row">${s}</th>
 						<td>XX</td>
 						<td>XX</td>
-						<td style="display:none;">0</td>
+						<td>XX</td>
 					</tr>
 				</c:forEach>
 			</tbody>

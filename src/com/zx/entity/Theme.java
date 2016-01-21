@@ -8,9 +8,14 @@ public class Theme implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8930757350323781756L;
 	private Integer id;
-	private String name;
-	private String code;
+	private String nameEn;
+	private String nameCn;
+	private String key;
 
 	// Constructors
 
@@ -19,9 +24,10 @@ public class Theme implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Theme(String name, String code) {
-		this.name = name;
-		this.code = code;
+	public Theme(String nameEn, String nameCn, String key) {
+		this.nameEn = nameEn;
+		this.nameCn = nameCn;
+		this.key = key;
 	}
 
 	// Property accessors
@@ -34,20 +40,28 @@ public class Theme implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getNameEn() {
+		return this.nameEn;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameEn(String nameEn) {
+		this.nameEn = nameEn;
 	}
 
-	public String getCode() {
-		return this.code;
+	public String getNameCn() {
+		return this.nameCn;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setNameCn(String nameCn) {
+		this.nameCn = nameCn;
+	}
+
+	public String getKey() {
+		return this.key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 }

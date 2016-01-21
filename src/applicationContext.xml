@@ -65,37 +65,30 @@
 	</aop:config>
 
 
-	<!-- Service Declaration -->
-	<bean id="ThemeDAO" class="com.zx.dao.impl.ThemeDaoImpl">
+	<!-- Service Declaration <bean id="userDao" class="com.zx.dao.impl.UserDaoImpl"> 
+		<property name="sessionFactory"> <ref bean="sessionFactory" /> </property> 
+		</bean> <bean id="userService" class="com.zx.service.impl.UserServiceImpl"> 
+		<property name="userDao" ref="userDao" /> </bean> -->
+
+	<bean id="themeDao" class="com.zx.dao.impl.ThemeDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="SUserDAO" class="com.zx.dao.impl.SUserDaoImpl">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
+	<bean id="themeService" class="com.zx.service.impl.ThemeServiceImpl">
+		<property name="themeDao">
+			<ref bean="themeDao" />
 		</property>
-	</bean>
-	<bean id="userDao" class="com.zx.dao.impl.UserDaoImpl">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean>
-	<bean id="userService" class="com.zx.service.impl.UserServiceImpl">
-		<property name="userDao" ref="userDao" />
 	</bean>
 
-	<!-- spring管理struts2的Action -->
-	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
-		<property name="userService" ref="userService" />
-	</bean>
+	<!-- spring管理struts2的Action protype解决单例问题 -->
+	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype" />
+	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />
 	<bean id="publishAction" class="com.zx.action.PublishAction"
-		scope="prototype">
-	</bean>
+		scope="prototype" />
 	<bean id="contentAction" class="com.zx.action.ContentAction"
-		scope="prototype">
-	</bean>
+		scope="prototype" />
 	<bean id="managerAction" class="com.zx.action.ManagerAction"
-		scope="prototype"></bean>
+		scope="prototype" />
 
 </beans>
