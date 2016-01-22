@@ -6,13 +6,15 @@ import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
+
+import static org.hibernate.criterion.Example.create;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zx.dao.ThemeDao;
+import com.zx.dao.ThemeDaoInterface;
 import com.zx.entity.Theme;
 
 /**
@@ -27,9 +29,8 @@ import com.zx.entity.Theme;
  * @author MyEclipse Persistence Tools
  */
 @Transactional
-public class ThemeDaoImpl implements ThemeDao {
-	private static final Logger log = LoggerFactory
-			.getLogger(ThemeDaoImpl.class);
+public class ThemeDAO implements ThemeDaoInterface {
+	private static final Logger log = LoggerFactory.getLogger(ThemeDAO.class);
 	// property constants
 	public static final String NAME_EN = "nameEn";
 	public static final String NAME_CN = "nameCn";
@@ -86,9 +87,9 @@ public class ThemeDaoImpl implements ThemeDao {
 	public List<?> findByExample(Theme instance) {
 		log.debug("finding Theme instance by example");
 		try {
-			List<?> results = getCurrentSession()
+			List<?> results = (List<?>) getCurrentSession()
 					.createCriteria("com.zx.entity.Theme")
-					.add(Example.create(instance)).list();
+					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
@@ -172,19 +173,18 @@ public class ThemeDaoImpl implements ThemeDao {
 		}
 	}
 
-	public static ThemeDaoImpl getFromApplicationContext(ApplicationContext ctx) {
-		return (ThemeDaoImpl) ctx.getBean("themeDao");
+	public static ThemeDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (ThemeDAO) ctx.getBean("ThemeDAO");
 	}
 
 	@Override
 	public boolean addTheme(Theme theme) {
 		// TODO Auto-generated method stub
-		System.out.println("addTheme");
 		try {
-			getCurrentSession().save(theme);
+			this.getCurrentSession().save(theme);
 			return true;
-		} catch (RuntimeException re) {
-			System.out.println(re.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

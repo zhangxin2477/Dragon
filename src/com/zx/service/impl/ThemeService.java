@@ -2,23 +2,23 @@ package com.zx.service.impl;
 
 import java.util.List;
 
-import com.zx.dao.ThemeDao;
+import com.zx.dao.ThemeDaoInterface;
 import com.zx.entity.Theme;
-import com.zx.service.ThemeService;
+import com.zx.service.ThemeServiceInterface;
 
-public class ThemeServiceImpl implements ThemeService {
+public class ThemeService implements ThemeServiceInterface {
 
-	public ThemeServiceImpl(){
+	public ThemeService(){
 		
 	}
 	
-	private ThemeDao themeDao;
+	private ThemeDaoInterface themeDao;
 	
-	public ThemeDao getThemeDao() {
+	public ThemeDaoInterface getThemeDao() {
 		return themeDao;
 	}
 
-	public void setThemeDao(ThemeDao themeDao) {
+	public void setThemeDao(ThemeDaoInterface themeDao) {
 		this.themeDao = themeDao;
 	}
 

@@ -23,9 +23,9 @@
 		</interceptors>
 
 		<action name="addtheme" class="themeAction" method="add">
-			<result name="none" type="json"></result>
-			<result name="error" type="json"></result>
-			<result name="success" type="json"></result>
+			<result name="none" type="json"/>
+			<result name="error" type="json"/>
+			<result name="success" type="json"/>
 		</action>
 
 		<action name="login" class="userAction" method="login">

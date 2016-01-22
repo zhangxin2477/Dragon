@@ -45,7 +45,7 @@ $('#add')
 										data : params,
 										dataType : "json",
 										success : function(data) {
-											layer.msg("注册成功！" + data);
+											layer.msg("注册成功！" + data.result);
 										},
 										error : function(XMLHttpRequest, textStatus, errorThrown) {
 											layer.msg("注册失败！");
@@ -58,7 +58,7 @@ $('#add')
 								},
 								content : "<form style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>中文名称</span><input name='theme.nameCn' type='text' class='form-control' placeholder='中文名称' aria-describedby='basic-addon1'></div><br>"
 										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>英文名称</span><input name='theme.nameEn' type='text' class='form-control' placeholder='英文名称' aria-describedby='basic-addon1'></div><br>"
-										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>注册码</span><input name='theme.key' type='text' class='form-control' placeholder='注册码' aria-describedby='basic-addon1'></div></form>"
+										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>注册码</span><input name='theme.preKey' type='text' class='form-control' placeholder='注册码' aria-describedby='basic-addon1'></div></form>"
 							});
 				})
 

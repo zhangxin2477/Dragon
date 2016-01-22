@@ -6,7 +6,7 @@ import org.apache.struts2.json.JSONResult;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.zx.entity.Theme;
-import com.zx.service.ThemeService;
+import com.zx.service.ThemeServiceInterface;
 
 public class ThemeAction extends ActionSupport {
 
@@ -15,13 +15,27 @@ public class ThemeAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = -7040710839716974926L;
 
-	private ThemeService themeService;
+	public ThemeAction(){
+		
+	}
+	
+	private JSONResult jsonResult;
+	
+	public JSONResult getJsonResult() {
+		return jsonResult;
+	}
 
-	public ThemeService getThemeService() {
+	public void setJsonResult(JSONResult jsonResult) {
+		this.jsonResult = jsonResult;
+	}
+
+	private ThemeServiceInterface themeService;
+
+	public ThemeServiceInterface getThemeService() {
 		return themeService;
 	}
 
-	public void setThemeService(ThemeService themeService) {
+	public void setThemeService(ThemeServiceInterface themeService) {
 		this.themeService = themeService;
 	}
 
@@ -48,7 +62,9 @@ public class ThemeAction extends ActionSupport {
 	public JSONResult add() {
 		System.out.println("addTheme");
 		try {
-			JSONResult jsonResult = new JSONResult();
+			jsonResult = new JSONResult();
+			jsonResult.setDefaultEncoding("UTF-8");
+			jsonResult.setStatusCode(0);
 			if (theme != null) {
 				boolean tmp = false;
 				tmp = themeService.addTheme(theme);
@@ -58,7 +74,7 @@ public class ThemeAction extends ActionSupport {
 					jsonResult.setRoot(ERROR);
 				}
 			} else {
-				jsonResult.setRoot(NONE);
+				jsonResult.setRoot(ERROR);
 			}
 			return jsonResult;
 		} catch (Exception e) {

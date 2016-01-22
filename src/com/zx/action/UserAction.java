@@ -1,7 +1,7 @@
 package com.zx.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.zx.service.UserService;
+import com.zx.service.UserServiceInterface;
 
 public class UserAction extends ActionSupport {
 
@@ -16,13 +16,13 @@ public class UserAction extends ActionSupport {
 		this.result = result;
 	}
 
-	private UserService userService;
+	private UserServiceInterface userService;
 
-	public UserService getUserService() {
+	public UserServiceInterface getUserService() {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(UserServiceInterface userService) {
 		this.userService = userService;
 	}
 

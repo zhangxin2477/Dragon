@@ -12,7 +12,8 @@
 	<!-- 第二种方法配置sessionFactory -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://mcfun.hicp.net:3306/dragon"></property>
+		<property name="url"
+			value="jdbc:mysql://zhangxin2477.vicp.cc:3306/dragon"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
@@ -29,10 +30,11 @@
 				<prop key="hibernate.autoReconnect">true</prop>
 			</props>
 		</property>
-		<!-- 包扫描的方式加载注解类 -->
-		<property name="mappingDirectoryLocations">
+		<!-- 包扫描的方式加载注解类 <property name="mappingDirectoryLocations"> <list> <value>classpath:com/zx/entity/</value> 
+			</list> </property> -->
+		<property name="annotatedClasses">
 			<list>
-				<value>classpath:com/zx/entity/</value>
+				<value>com.zx.entity.Theme</value>
 			</list>
 		</property>
 	</bean>
@@ -70,18 +72,18 @@
 		</bean> <bean id="userService" class="com.zx.service.impl.UserServiceImpl"> 
 		<property name="userDao" ref="userDao" /> </bean> -->
 
-	<bean id="themeDao" class="com.zx.dao.impl.ThemeDaoImpl">
+	<bean id="ThemeDAO" class="com.zx.dao.impl.ThemeDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<bean id="themeService" class="com.zx.service.impl.ThemeServiceImpl">
+	<bean id="themeService" class="com.zx.service.impl.ThemeService">
 		<property name="themeDao">
-			<ref bean="themeDao" />
+			<ref bean="ThemeDAO" />
 		</property>
 	</bean>
 
-	<!-- spring管理struts2的Action protype解决单例问题 -->
+	<!-- spring管理struts2的Action prototype解决单例问题 -->
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
 		<property name="themeService" ref="themeService" />
 	</bean>
