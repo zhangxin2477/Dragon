@@ -41,7 +41,7 @@ $('#add')
 									$.ajax({
 										type : "POST",
 										async : true,
-										url : "addTheme",
+										url : "addtheme",
 										data : params,
 										dataType : "json",
 										success : function(data) {

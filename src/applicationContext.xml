@@ -82,7 +82,9 @@
 	</bean>
 
 	<!-- spring管理struts2的Action protype解决单例问题 -->
-	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype" />
+	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
+		<property name="themeService" ref="themeService" />
+	</bean>
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />
 	<bean id="publishAction" class="com.zx.action.PublishAction"
 		scope="prototype" />

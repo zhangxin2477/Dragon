@@ -22,7 +22,7 @@
 			</interceptor-stack>
 		</interceptors>
 
-		<action name="addtheme" class="themeAction" method="add1">
+		<action name="addtheme" class="themeAction" method="add">
 			<result name="none" type="json"></result>
 			<result name="error" type="json"></result>
 			<result name="success" type="json"></result>

@@ -47,35 +47,23 @@ public class ThemeAction extends ActionSupport {
 
 	public JSONResult add() {
 		System.out.println("addTheme");
-		JSONResult jsonResult = new JSONResult();
-		if (theme != null) {
-			boolean tmp = false;
-			tmp = themeService.addTheme(theme);
-			if (tmp) {
-				jsonResult.setRoot(SUCCESS);
+		try {
+			JSONResult jsonResult = new JSONResult();
+			if (theme != null) {
+				boolean tmp = false;
+				tmp = themeService.addTheme(theme);
+				if (tmp) {
+					jsonResult.setRoot(SUCCESS);
+				} else {
+					jsonResult.setRoot(ERROR);
+				}
 			} else {
-				jsonResult.setRoot(ERROR);
+				jsonResult.setRoot(NONE);
 			}
-		} else {
-			jsonResult.setRoot(NONE);
+			return jsonResult;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
 		}
-		return jsonResult;
-	}
-	
-	public String add1() {
-		System.out.println("addTheme");
-		JSONResult jsonResult = new JSONResult();
-		if (theme != null) {
-			boolean tmp = false;
-			tmp = themeService.addTheme(theme);
-			if (tmp) {
-				jsonResult.setRoot(SUCCESS);
-			} else {
-				jsonResult.setRoot(ERROR);
-			}
-		} else {
-			jsonResult.setRoot(NONE);
-		}
-		return SUCCESS;
 	}
 }

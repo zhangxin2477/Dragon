@@ -179,6 +179,7 @@ public class ThemeDaoImpl implements ThemeDao {
 	@Override
 	public boolean addTheme(Theme theme) {
 		// TODO Auto-generated method stub
+		System.out.println("addTheme");
 		try {
 			getCurrentSession().save(theme);
 			return true;
