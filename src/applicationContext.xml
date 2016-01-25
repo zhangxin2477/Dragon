@@ -35,7 +35,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.zx.entity.Theme</value>
-			</list>
+				<value>com.zx.entity.SDirectory</value></list>
 		</property>
 	</bean>
 
@@ -71,15 +71,31 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	
+	<bean id="SDirectoryDAO" class="com.zx.dao.impl.SDirectoryDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
 	<bean id="themeService" class="com.zx.service.impl.ThemeService">
 		<property name="themeDaoInterface">
 			<ref bean="ThemeDAO" />
+		</property>
+	</bean>
+	
+	<bean id="directoryService" class="com.zx.service.impl.DirectoryService">
+		<property name="sdirectoryDaoInterface">
+			<ref bean="SDirectoryDAO" />
 		</property>
 	</bean>
 
 	<!-- spring管理struts2的Action prototype解决单例问题 -->
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
 		<property name="themeServiceInterface" ref="themeService" />
+	</bean>
+	<bean id="directoryAction" class="com.zx.action.DirectoryAction" scope="prototype">
+		<property name="directoryServiceInterface" ref="directoryService" />
 	</bean>
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />
 	<bean id="publishAction" class="com.zx.action.PublishAction"
@@ -88,5 +104,4 @@
 		scope="prototype" />
 	<bean id="managerAction" class="com.zx.action.ManagerAction"
 		scope="prototype" />
-
 </beans>

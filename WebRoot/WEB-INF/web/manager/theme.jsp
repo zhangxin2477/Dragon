@@ -4,6 +4,7 @@
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 
+<!-- start:theme -->
 <div class="panel panel-default">
 	<!-- Default panel contents -->
 	<div class="panel-heading">主题管理</div>
@@ -25,21 +26,12 @@
 					<th>密钥</th>
 				</tr>
 			</thead>
-			<tbody id="theme">
-				<c:forEach var="s" begin="1" end="5">
-					<tr onclick="sel(this)">
-						<td style="display:none;">0</td>
-						<td style="display:none;">0</td>
-						<th scope="row">${s}</th>
-						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+			<tbody id="theme"></tbody>
 		</table>
 		<div class="page" style="text-align:center;"></div>
 	</div>
 </div>
 
+<script src="${path}/WEB-JS/common/common.js"></script>
 <script src="${path}/WEB-JS/manager/theme.js"></script>
+<!-- end:theme -->

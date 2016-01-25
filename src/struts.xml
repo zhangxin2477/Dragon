@@ -22,29 +22,57 @@
 			</interceptor-stack>
 		</interceptors>
 
+		<!-- start：theme -->
 		<action name="addtheme" class="themeAction" method="add">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-		
-		<action name="findalltheme" class="themeAction" method="getAll">
-			<result name="success" type="json">
-				<param name="root">page</param>
-			</result>
-		</action>
-		
+
 		<action name="deletetheme" class="themeAction" method="delete">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-		
+
 		<action name="updatetheme" class="themeAction" method="update">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
+
+		<action name="findalltheme" class="themeAction" method="getAllTheme">
+			<result name="success" type="json">
+				<param name="root">page</param>
+			</result>
+		</action>
+		<!-- end:theme -->
+
+		<!-- start:sdirectory -->
+		<action name="addsdir" class="directoryAction" method="addSdir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="deletesdir" class="directoryAction" method="deleteSdir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="updatesdir" class="directoryAction" method="updateSdir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="findallsdir" class="directoryAction" method="getSdir">
+			<result name="success" type="json">
+				<param name="root">sdir_page</param>
+			</result>
+		</action>
+		<!-- end:sdirectory -->
 
 		<action name="login" class="userAction" method="login">
 			<result name="none">/WEB-INF/web/user/login.jsp</result>

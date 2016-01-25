@@ -100,7 +100,7 @@ public class ThemeDAO implements ThemeDaoInterface {
 		}
 	}
 
-	public List<?> findPageByExample(int pageNo, int pageSize, Theme instance) {
+	public List<?> findPageByExample(Theme instance) {
 		log.debug("finding Theme instance by example");
 		try {
 			List<?> results = (List<?>) getCurrentSession()
@@ -174,27 +174,47 @@ public class ThemeDAO implements ThemeDaoInterface {
 		return page;
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean update(Theme theme) {
 		try {
 			if (theme.getId() != null
 					&& (theme.getNameCn() != null || theme.getNameEn() != null || theme
 							.getPreKey() != null)) {
-				String queryString = "update Theme set ";
-				if (theme.getNameCn() != null) {
-					queryString += "name_en='" + theme.getNameCn() + "',";
+				List<Theme> nc = (List<Theme>) findByNameCn(theme.getNameCn());
+				List<Theme> ne = (List<Theme>) findByNameEn(theme.getNameEn());
+				boolean tmp = false;
+				if (nc.size() == 0) {
+					if (ne.size() == 0) {
+						tmp = true;
+					} else if (ne.get(0).getId() == theme.getId()) {
+						tmp = true;
+					}
+				} else if (nc.get(0).getId() == theme.getId()) {
+					if (ne.size() == 0) {
+						tmp = true;
+					} else if (ne.get(0).getId() == theme.getId()) {
+						tmp = true;
+					}
 				}
-				if (theme.getNameEn() != null) {
-					queryString += "name_cn='" + theme.getNameEn() + "',";
+				if (tmp) {
+					String queryString = "update Theme set ";
+					if (theme.getNameCn() != null) {
+						queryString += "name_cn='" + theme.getNameCn() + "',";
+					}
+					if (theme.getNameEn() != null) {
+						queryString += "name_en='" + theme.getNameEn() + "',";
+					}
+					if (theme.getPreKey() != null) {
+						queryString += "pre_key='" + theme.getPreKey() + "',";
+					}
+					queryString = queryString.substring(0,
+							queryString.length() - 1);
+					queryString += " where id=" + theme.getId();
+					Query queryObject = getCurrentSession().createQuery(
+							queryString);
+					queryObject.executeUpdate();
+					return true;
 				}
-				if (theme.getPreKey() != null) {
-					queryString += "pre_key='" + theme.getPreKey() + "',";
-				}
-				queryString.substring(0, queryString.length() - 1);
-				queryString += " where id=" + theme.getId();
-				Query queryObject = getCurrentSession()
-						.createQuery(queryString);
-				queryObject.executeUpdate();
-				return true;
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -246,8 +266,13 @@ public class ThemeDAO implements ThemeDaoInterface {
 	public boolean addTheme(Theme theme) {
 		// TODO Auto-generated method stub
 		try {
-			this.getCurrentSession().save(theme);
-			return true;
+			if (findByNameCn(theme.getNameCn()).size() == 0
+					&& findByNameEn(theme.getNameEn()).size() == 0) {
+				this.getCurrentSession().save(theme);
+				return true;
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return false;

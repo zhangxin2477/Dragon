@@ -36,19 +36,6 @@ public class ThemeAction extends ActionSupport {
 		return Action.SUCCESS;
 	}
 
-	public String getAll() {
-		try {
-			if (page != null) {
-				page = themeServiceInterface.getTheme(page.getPageNow());
-			} else {
-				System.out.println("page is null!");
-			}
-		} catch (Exception e) {
-			System.out.println("exception:" + e.getMessage());
-		}
-		return Action.SUCCESS;
-	}
-
 	public String delete() {
 		try {
 			if (theme.getId() != null) {
@@ -84,6 +71,19 @@ public class ThemeAction extends ActionSupport {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			result = e.getMessage();
+		}
+		return Action.SUCCESS;
+	}
+
+	public String getAllTheme() {
+		try {
+			if (page != null) {
+				page = themeServiceInterface.getTheme(page.getPageNow());
+			} else {
+				System.out.println("page is null!");
+			}
+		} catch (Exception e) {
+			System.out.println("exception:" + e.getMessage());
 		}
 		return Action.SUCCESS;
 	}
