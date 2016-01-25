@@ -134,7 +134,7 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 			throw re;
 		}
 	}
-	
+
 	public Page findAll(int pageNo) {
 		log.debug("finding all SDirectory instances");
 		Page page = new Page();
@@ -199,7 +199,8 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 	public boolean addSDir(SDirectory sdir) {
 		// TODO Auto-generated method stub
 		try {
-			if(findByName(sdir.getName()).size()==0){
+			if (findByName(sdir.getName()).size() == 0
+					&& findByName(sdir.getName()).size() == 0) {
 				this.save(sdir);
 				return true;
 			}
@@ -222,10 +223,39 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public boolean updateSDir(SDirectory sdir) {
 		// TODO Auto-generated method stub
-		return false;
+		try {
+			if (sdir.getId() != null && sdir.getName() != null) {
+				List<SDirectory> sd = (List<SDirectory>) findByName(sdir
+						.getName());
+				boolean tmp = false;
+				if (sd.size() == 0) {
+					tmp = true;
+				} else {
+					if (sd.get(0).getId() == sdir.getId()) {
+						tmp = true;
+					}
+				}
+				if (tmp) {
+					String queryString = "update SDirectory set name='"
+							+ sdir.getName() + "' where id=" + sdir.getId();
+					Query queryObject = getCurrentSession().createQuery(
+							queryString);
+					queryObject.executeUpdate();
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 
 	@Override

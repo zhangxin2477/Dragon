@@ -88,7 +88,7 @@ $('#delete').click(
 					yes : function() {
 						var params = "theme.id=" + id;
 						postAjax(params, "deletetheme", 0, "page.pageNow=",
-								"findalltheme", "1")
+								"findalltheme", "1");
 					}
 				});
 			} else {
