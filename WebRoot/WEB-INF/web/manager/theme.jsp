@@ -18,6 +18,7 @@
 			<thead>
 				<tr>
 					<th style="display:none;">选择</th>
+					<th style="display:none;">id</th>
 					<th>序号</th>
 					<th>中文名称</th>
 					<th>英文名称</th>
@@ -27,6 +28,7 @@
 			<tbody id="theme">
 				<c:forEach var="s" begin="1" end="5">
 					<tr onclick="sel(this)">
+						<td style="display:none;">0</td>
 						<td style="display:none;">0</td>
 						<th scope="row">${s}</th>
 						<td>XX</td>

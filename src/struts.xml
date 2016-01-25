@@ -2,7 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<!-- 访问时，不需要加.action,无须任何后缀名 -->
-	<constant name="struts.action.extension" value=","/>
+	<constant name="struts.action.extension" value="," />
 
 	<!-- 由Spring来代理控制层 -->
 	<constant name="struts.objectFactory" value="spring" />
@@ -15,17 +15,35 @@
 		<interceptors>
 			<interceptor name="json"
 				class="org.apache.struts2.json.JSONInterceptor" />
-			<interceptor name="myInterceptor" class="myInterceptor"/>
+			<interceptor name="myInterceptor" class="myInterceptor" />
 			<interceptor-stack name="myDefult">
-				<interceptor-ref name="myInterceptor"/>
-				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="myInterceptor" />
+				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
 
 		<action name="addtheme" class="themeAction" method="add">
-			<result name="none" type="json"/>
-			<result name="error" type="json"/>
-			<result name="success" type="json"/>
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="findalltheme" class="themeAction" method="getAll">
+			<result name="success" type="json">
+				<param name="root">page</param>
+			</result>
+		</action>
+		
+		<action name="deletetheme" class="themeAction" method="delete">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="updatetheme" class="themeAction" method="update">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
 
 		<action name="login" class="userAction" method="login">

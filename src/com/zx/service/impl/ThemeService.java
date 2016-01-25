@@ -1,7 +1,6 @@
 package com.zx.service.impl;
 
-import java.util.List;
-
+import com.zx.common.Page;
 import com.zx.dao.ThemeDaoInterface;
 import com.zx.entity.Theme;
 import com.zx.service.ThemeServiceInterface;
@@ -12,32 +11,38 @@ public class ThemeService implements ThemeServiceInterface {
 		
 	}
 	
-	private ThemeDaoInterface themeDao;
+	private ThemeDaoInterface themeDaoInterface;
 	
-	public ThemeDaoInterface getThemeDao() {
-		return themeDao;
+	public ThemeDaoInterface getThemeDaoInterface() {
+		return themeDaoInterface;
 	}
 
-	public void setThemeDao(ThemeDaoInterface themeDao) {
-		this.themeDao = themeDao;
+	public void setThemeDaoInterface(ThemeDaoInterface themeDaoInterface) {
+		this.themeDaoInterface = themeDaoInterface;
 	}
 
 	@Override
 	public boolean addTheme(Theme theme) {
 		// TODO Auto-generated method stub
-		return themeDao.addTheme(theme);
+		return themeDaoInterface.addTheme(theme);
 	}
 
 	@Override
-	public List<?> getTheme(Theme theme) {
+	public Page getTheme(int pageNow) {
 		// TODO Auto-generated method stub
-		return themeDao.getTheme(theme);
+		return themeDaoInterface.getTheme(pageNow);
 	}
 
 	@Override
 	public boolean deleteTheme(Theme theme) {
 		// TODO Auto-generated method stub
-		return themeDao.deleteTheme(theme);
+		return themeDaoInterface.deleteTheme(theme);
+	}
+
+	@Override
+	public boolean update(Theme theme) {
+		// TODO Auto-generated method stub
+		return themeDaoInterface.updateTheme(theme);
 	}
 
 }

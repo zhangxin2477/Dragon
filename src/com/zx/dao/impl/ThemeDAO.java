@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zx.common.Page;
 import com.zx.dao.ThemeDaoInterface;
 import com.zx.entity.Theme;
 
@@ -34,7 +35,7 @@ public class ThemeDAO implements ThemeDaoInterface {
 	// property constants
 	public static final String NAME_EN = "nameEn";
 	public static final String NAME_CN = "nameCn";
-	public static final String KEY = "key";
+	public static final String PRE_KEY = "preKey";
 
 	private SessionFactory sessionFactory;
 
@@ -99,6 +100,21 @@ public class ThemeDAO implements ThemeDaoInterface {
 		}
 	}
 
+	public List<?> findPageByExample(int pageNo, int pageSize, Theme instance) {
+		log.debug("finding Theme instance by example");
+		try {
+			List<?> results = (List<?>) getCurrentSession()
+					.createCriteria("com.zx.entity.Theme")
+					.add(create(instance)).list();
+			log.debug("find by example successful, result size: "
+					+ results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+
 	public List<?> findByProperty(String propertyName, Object value) {
 		log.debug("finding Theme instance with property: " + propertyName
 				+ ", value: " + value);
@@ -122,8 +138,8 @@ public class ThemeDAO implements ThemeDaoInterface {
 		return findByProperty(NAME_CN, nameCn);
 	}
 
-	public List<?> findByKey(Object key) {
-		return findByProperty(KEY, key);
+	public List<?> findByKey(Object preKey) {
+		return findByProperty(PRE_KEY, preKey);
 	}
 
 	public List<?> findAll() {
@@ -136,6 +152,55 @@ public class ThemeDAO implements ThemeDaoInterface {
 			log.error("find all failed", re);
 			throw re;
 		}
+	}
+
+	public Page findAll(int pageNo) {
+		log.debug("finding all Theme instances");
+		Page page = new Page();
+		try {
+			String queryString = "from Theme";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			page.setTotalCount(queryObject.list().size());
+			page.setPageNow(pageNo);
+			int pageSize = page.getPageSize();
+			page.setPageCount((page.getTotalCount() + pageSize - 1) / pageSize);
+			queryObject.setFirstResult((pageNo - 1) * pageSize);
+			queryObject.setMaxResults(pageSize);
+			page.setDataList(queryObject.list());
+		} catch (Exception e) {
+			log.error("find all failed", e);
+			throw e;
+		}
+		return page;
+	}
+
+	public boolean update(Theme theme) {
+		try {
+			if (theme.getId() != null
+					&& (theme.getNameCn() != null || theme.getNameEn() != null || theme
+							.getPreKey() != null)) {
+				String queryString = "update Theme set ";
+				if (theme.getNameCn() != null) {
+					queryString += "name_en='" + theme.getNameCn() + "',";
+				}
+				if (theme.getNameEn() != null) {
+					queryString += "name_cn='" + theme.getNameEn() + "',";
+				}
+				if (theme.getPreKey() != null) {
+					queryString += "pre_key='" + theme.getPreKey() + "',";
+				}
+				queryString.substring(0, queryString.length() - 1);
+				queryString += " where id=" + theme.getId();
+				Query queryObject = getCurrentSession()
+						.createQuery(queryString);
+				queryObject.executeUpdate();
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		return false;
 	}
 
 	public Theme merge(Theme detachedInstance) {
@@ -190,14 +255,26 @@ public class ThemeDAO implements ThemeDaoInterface {
 	}
 
 	@Override
-	public List<?> getTheme(Theme theme) {
+	public Page getTheme(int pageNow) {
 		// TODO Auto-generated method stub
-		return null;
+		return findAll(pageNow);
 	}
 
 	@Override
 	public boolean deleteTheme(Theme theme) {
 		// TODO Auto-generated method stub
-		return false;
+		try {
+			this.getCurrentSession().delete(theme);// 主键值
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateTheme(Theme theme) {
+		// TODO Auto-generated method stub
+		return update(theme);
 	}
 }

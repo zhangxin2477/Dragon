@@ -24,7 +24,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.autoReconnect">true</prop>
@@ -66,26 +66,20 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoMethod" />
 	</aop:config>
 
-
-	<!-- Service Declaration <bean id="userDao" class="com.zx.dao.impl.UserDaoImpl"> 
-		<property name="sessionFactory"> <ref bean="sessionFactory" /> </property> 
-		</bean> <bean id="userService" class="com.zx.service.impl.UserServiceImpl"> 
-		<property name="userDao" ref="userDao" /> </bean> -->
-
 	<bean id="ThemeDAO" class="com.zx.dao.impl.ThemeDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 	<bean id="themeService" class="com.zx.service.impl.ThemeService">
-		<property name="themeDao">
+		<property name="themeDaoInterface">
 			<ref bean="ThemeDAO" />
 		</property>
 	</bean>
 
 	<!-- spring管理struts2的Action prototype解决单例问题 -->
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
-		<property name="themeService" ref="themeService" />
+		<property name="themeServiceInterface" ref="themeService" />
 	</bean>
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />
 	<bean id="publishAction" class="com.zx.action.PublishAction"
