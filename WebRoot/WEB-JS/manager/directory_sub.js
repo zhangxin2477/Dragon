@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	getAjax("sdir_page.pageNow=", "findallsdir", "1");
+	getAjax("sdir_page.pageNow=", "getsdirpage", "1");
 });
 
 var loadData = function() {
@@ -25,7 +25,7 @@ $('#add-sub')
 							"保存",
 							"关闭",
 							"<form style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>子菜单名称</span><input type='text' class='form-control' placeholder='子菜单名称' aria-describedby='basic-addon1' name='sdirectory.name'></div></form>",
-							"addsdir", "sdir_page.pageNow=", "findallsdir", "1");
+							"addsdir", "sdir_page.pageNow=", "getsdirpage", "1");
 				})
 
 $('#edit-sub')
@@ -52,7 +52,7 @@ $('#edit-sub')
 										+ "'/><div class='input-group'><span class='input-group-addon' id='basic-addon1'>子菜单名称</span><input type='text' class='form-control' placeholder='子菜单名称' aria-describedby='basic-addon1' value='"
 										+ name
 										+ "' name='sdirectory.name'></div></form>",
-								"updatesdir", "sdir_page.pageNow", "findallsdir",
+								"updatesdir", "sdir_page.pageNow", "getsdirpage",
 								"1");
 					} else {
 						layer.msg("选择不能为空！");
@@ -77,7 +77,7 @@ $('#delete-sub').click(
 					yes : function() {
 						var params = "sdirectory.id=" + id;
 						postAjax(params, "deletesdir", 0, "sdir_page.pageNow=",
-								"findallsdir", "1");
+								"getsdirpage", "1");
 					}
 				});
 			} else {

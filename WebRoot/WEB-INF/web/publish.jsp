@@ -9,6 +9,11 @@
 <head>
 <title>发布内容</title>
 <c:import url="/WEB-INF/web/common/common.jsp" />
+<!-- 百度富文本 -->
+<link href="${path}/WEB-PLUGIN/editor/themes/default/css/ueditor.min.css" rel="stylesheet">
+<script src="${path}/WEB-PLUGIN/editor/ueditor.config.js"></script>
+<script src="${path}/WEB-PLUGIN/editor/ueditor.all.js"></script>
+
 <link href="${path}/WEB-CSS/publish.css" rel="stylesheet" />
 <script src="${path}/WEB-JS/publish.js" type="text/javascript"></script>
 </head>

@@ -22,7 +22,7 @@
 			</interceptor-stack>
 		</interceptors>
 
-		<!-- start：theme -->
+		<!-- start：theme主题 -->
 		<action name="addtheme" class="themeAction" method="add">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -41,14 +41,20 @@
 			</result>
 		</action>
 
-		<action name="findalltheme" class="themeAction" method="getAllTheme">
+		<action name="findalltheme" class="themeAction" method="getThemePage">
 			<result name="success" type="json">
 				<param name="root">page</param>
 			</result>
 		</action>
-		<!-- end:theme -->
+		
+		<action name="getthemelist" class="themeAction" method="getThemeList">
+			<result name="success" type="json">
+				<param name="root">list</param>
+			</result>
+		</action>
+		<!-- end:theme主题 -->
 
-		<!-- start:sdirectory -->
+		<!-- start:sdirectory子菜单 -->
 		<action name="addsdir" class="directoryAction" method="addSdir">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -67,12 +73,44 @@
 			</result>
 		</action>
 
-		<action name="findallsdir" class="directoryAction" method="getSdir">
+		<action name="getsdirpage" class="directoryAction" method="getSDirPage">
 			<result name="success" type="json">
 				<param name="root">sdir_page</param>
 			</result>
 		</action>
-		<!-- end:sdirectory -->
+		<!-- end:sdirectory子菜单 -->
+
+		<!-- start:directory子菜单 -->
+		<action name="adddir" class="directoryAction" method="addDir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="deletedir" class="directoryAction" method="deleteDir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="updatedir" class="directoryAction" method="updateDir">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+
+		<action name="getdirpage" class="directoryAction" method="getDirPage">
+			<result name="success" type="json">
+				<param name="root">dir_page</param>
+			</result>
+		</action>
+
+		<action name="getsdirfordir" class="directoryAction" method="getSdirForDir">
+			<result name="success" type="json">
+				<param name="root">s_list</param>
+			</result>
+		</action>
+		<!-- end:directory -->
 
 		<action name="login" class="userAction" method="login">
 			<result name="none">/WEB-INF/web/user/login.jsp</result>

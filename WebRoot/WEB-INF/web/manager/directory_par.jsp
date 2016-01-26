@@ -4,6 +4,7 @@
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 
+<!-- START:DIR_PAR -->
 <div class="panel panel-default">
 	<!-- Default panel contents -->
 	<div class="panel-heading">菜单管理</div>
@@ -17,27 +18,22 @@
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
+					<th style="display:none;">选择</th>
+					<th style="display:none;">id</th>
+					<th style="display:none;">s_dir_id</th>
+					<th style="display:none;">theme_id</th>
 					<th>序号</th>
 					<th>父菜单</th>
 					<th>子菜单</th>
 					<th>主题</th>
-					<th style="display:none;">选择</th>
 				</tr>
 			</thead>
-			<tbody id="directory-par">
-				<c:forEach var="s" begin="1" end="5">
-					<tr onclick="selPar(this)">
-						<th scope="row">${s}</th>
-						<td>XX</td>
-						<td>XX</td>
-						<td>XX</td>
-						<td style="display:none;">0</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+			<tbody id="directory-par"></tbody>
 		</table>
 		<div class="page" style="text-align:center;"></div>
 	</div>
 </div>
 
+<script src="${path}/WEB-JS/common/common.js"></script>
 <script src="${path}/WEB-JS/manager/directory_par.js"></script>
+<!-- END:DIR_PAR -->

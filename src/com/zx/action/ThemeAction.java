@@ -1,5 +1,7 @@
 package com.zx.action;
 
+import java.util.List;
+
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.zx.common.Page;
@@ -17,6 +19,7 @@ public class ThemeAction extends ActionSupport {
 	private ThemeServiceInterface themeServiceInterface;
 	private Theme theme;
 	private Page page;
+	private List<Theme> list;
 
 	public String add() {
 		try {
@@ -75,13 +78,23 @@ public class ThemeAction extends ActionSupport {
 		return Action.SUCCESS;
 	}
 
-	public String getAllTheme() {
+	public String getThemePage() {
 		try {
 			if (page != null) {
 				page = themeServiceInterface.getTheme(page.getPageNow());
 			} else {
 				System.out.println("page is null!");
 			}
+		} catch (Exception e) {
+			System.out.println("exception:" + e.getMessage());
+		}
+		return Action.SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String getThemeList() {
+		try {
+			list = (List<Theme>) themeServiceInterface.findAll();
 		} catch (Exception e) {
 			System.out.println("exception:" + e.getMessage());
 		}
@@ -119,5 +132,13 @@ public class ThemeAction extends ActionSupport {
 
 	public void setPage(Page page) {
 		this.page = page;
+	}
+
+	public List<Theme> getList() {
+		return list;
+	}
+
+	public void setList(List<Theme> list) {
+		this.list = list;
 	}
 }

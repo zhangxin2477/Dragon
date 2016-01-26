@@ -1,5 +1,7 @@
 package com.zx.service.impl;
 
+import java.util.List;
+
 import com.zx.common.Page;
 import com.zx.dao.ThemeDaoInterface;
 import com.zx.entity.Theme;
@@ -43,6 +45,12 @@ public class ThemeService implements ThemeServiceInterface {
 	public boolean update(Theme theme) {
 		// TODO Auto-generated method stub
 		return themeDaoInterface.updateTheme(theme);
+	}
+
+	@Override
+	public List<?> findAll() {
+		// TODO Auto-generated method stub
+		return themeDaoInterface.findAll();
 	}
 
 }

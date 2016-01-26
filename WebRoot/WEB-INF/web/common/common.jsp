@@ -22,11 +22,6 @@
 <script src="${path}/WEB-PLUGIN/layer/laypage.js"></script>
 <script src="${path}/WEB-JS/common/IECheck.js"></script>
 
-<!-- 百度富文本 -->
-<link href="${path}/WEB-PLUGIN/editor/themes/default/css/ueditor.min.css" rel="stylesheet">
-
-<script src="${path}/WEB-PLUGIN/editor/ueditor.config.js"></script>
-<script src="${path}/WEB-PLUGIN/editor/ueditor.all.js"></script>
 
 <!-- 地区 -->
 <script src="${path}/WEB-PLUGIN/city/area.js"></script>

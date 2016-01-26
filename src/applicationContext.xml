@@ -35,7 +35,9 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.zx.entity.Theme</value>
-				<value>com.zx.entity.SDirectory</value></list>
+				<value>com.zx.entity.SDirectory</value>
+				<value>com.zx.entity.Directory</value>
+			</list>
 		</property>
 	</bean>
 
@@ -71,22 +73,31 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+
 	<bean id="SDirectoryDAO" class="com.zx.dao.impl.SDirectoryDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+
+	<bean id="DirectoryDAO" class="com.zx.dao.impl.DirectoryDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
 	<bean id="themeService" class="com.zx.service.impl.ThemeService">
 		<property name="themeDaoInterface">
 			<ref bean="ThemeDAO" />
 		</property>
 	</bean>
-	
+
 	<bean id="directoryService" class="com.zx.service.impl.DirectoryService">
 		<property name="sdirectoryDaoInterface">
 			<ref bean="SDirectoryDAO" />
+		</property>
+		<property name="directoryDaoInterface">
+			<ref bean="DirectoryDAO" />
 		</property>
 	</bean>
 
@@ -94,7 +105,8 @@
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
 		<property name="themeServiceInterface" ref="themeService" />
 	</bean>
-	<bean id="directoryAction" class="com.zx.action.DirectoryAction" scope="prototype">
+	<bean id="directoryAction" class="com.zx.action.DirectoryAction"
+		scope="prototype">
 		<property name="directoryServiceInterface" ref="directoryService" />
 	</bean>
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />

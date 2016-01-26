@@ -15,27 +15,26 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zx.common.Page;
-import com.zx.dao.SDirectoryDaoInterface;
-import com.zx.entity.SDirectory;
+import com.zx.dao.DirectoryDaoInterface;
 import com.zx.entity.Directory;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * SDirectory entities. Transaction control of the save(), update() and delete()
+ * Directory entities. Transaction control of the save(), update() and delete()
  * operations can directly support Spring container-managed transactions or they
  * can be augmented to handle user-managed Spring transactions. Each of these
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see com.zx.entity.SDirectory
+ * @see com.zx.entity.Directory
  * @author MyEclipse Persistence Tools
  */
-@SuppressWarnings("unused")
 @Transactional
-public class SDirectoryDAO implements SDirectoryDaoInterface {
+public class DirectoryDAO implements DirectoryDaoInterface {
 	private static final Logger log = LoggerFactory
-			.getLogger(SDirectoryDAO.class);
+			.getLogger(DirectoryDAO.class);
 	// property constants
+	public static final String THEME_ID = "themeId";
 	public static final String _SDIR_ID = "SDirId";
 	public static final String NAME = "name";
 
@@ -53,19 +52,19 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		// do nothing
 	}
 
-	public void save(SDirectory transientInstance) {
-		log.debug("saving SDirectory instance");
+	public void save(Directory transientInstance) {
+		log.debug("saving Directory instance");
 		try {
 			getCurrentSession().save(transientInstance);
 			log.debug("save successful");
-		} catch (RuntimeException re) {
+		} catch (Exception re) {
 			log.error("save failed", re);
 			throw re;
 		}
 	}
 
-	public void delete(SDirectory persistentInstance) {
-		log.debug("deleting SDirectory instance");
+	public void delete(Directory persistentInstance) {
+		log.debug("deleting Directory instance");
 		try {
 			getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -75,11 +74,11 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	public SDirectory findById(java.lang.Integer id) {
-		log.debug("getting SDirectory instance with id: " + id);
+	public Directory findById(java.lang.Integer id) {
+		log.debug("getting Directory instance with id: " + id);
 		try {
-			SDirectory instance = (SDirectory) getCurrentSession().get(
-					"com.zx.entity.SDirectory", id);
+			Directory instance = (Directory) getCurrentSession().get(
+					"com.zx.entity.Directory", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -87,11 +86,11 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	public List<?> findByExample(SDirectory instance) {
-		log.debug("finding SDirectory instance by example");
+	public List<?> findByExample(Directory instance) {
+		log.debug("finding Directory instance by example");
 		try {
-			List<?> results = getCurrentSession()
-					.createCriteria("com.zx.entity.SDirectory")
+			List<?> results = (List<?>) getCurrentSession()
+					.createCriteria("com.zx.entity.Directory")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -103,10 +102,10 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 	}
 
 	public List<?> findByProperty(String propertyName, Object value) {
-		log.debug("finding SDirectory instance with property: " + propertyName
+		log.debug("finding Directory instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from SDirectory as model where model."
+			String queryString = "from Directory as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -117,6 +116,10 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
+	public List<?> findByThemeId(Object themeId) {
+		return findByProperty(THEME_ID, themeId);
+	}
+
 	public List<?> findBySDirId(Object SDirId) {
 		return findByProperty(_SDIR_ID, SDirId);
 	}
@@ -125,30 +128,29 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		return findByProperty(NAME, name);
 	}
 
-	public List<?> findSdirList() {
-		log.debug("finding all SDirectory instances");
+	public List<?> findAll() {
+		log.debug("finding all Directory instances");
 		try {
-			String queryString = "select sdir.id,sdir.name from SDirectory as sdir,Directory as dir where sdir.id<>dir.SDirId";
+			String queryString = "from Directory";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
-			System.out.println(re.getMessage());
-			return null;
+			throw re;
 		}
 	}
 
-	public Page findAll(int pageNo) {
-		log.debug("finding all SDirectory instances");
+	public Page findAll(int pageNow) {
+		log.debug("finding all Directory instances");
 		Page page = new Page();
 		try {
-			String queryString = "from SDirectory";
+			String queryString = "from Directory";
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			page.setTotalCount(queryObject.list().size());
-			page.setPageNow(pageNo);
+			page.setPageNow(pageNow);
 			int pageSize = page.getPageSize();
 			page.setPageCount((page.getTotalCount() + pageSize - 1) / pageSize);
-			queryObject.setFirstResult((pageNo - 1) * pageSize);
+			queryObject.setFirstResult((pageNow - 1) * pageSize);
 			queryObject.setMaxResults(pageSize);
 			page.setDataList(queryObject.list());
 		} catch (Exception e) {
@@ -158,10 +160,10 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		return page;
 	}
 
-	public SDirectory merge(SDirectory detachedInstance) {
-		log.debug("merging SDirectory instance");
+	public Directory merge(Directory detachedInstance) {
+		log.debug("merging Directory instance");
 		try {
-			SDirectory result = (SDirectory) getCurrentSession().merge(
+			Directory result = (Directory) getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -171,8 +173,8 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	public void attachDirty(SDirectory instance) {
-		log.debug("attaching dirty SDirectory instance");
+	public void attachDirty(Directory instance) {
+		log.debug("attaching dirty Directory instance");
 		try {
 			getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -182,8 +184,8 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	public void attachClean(SDirectory instance) {
-		log.debug("attaching clean SDirectory instance");
+	public void attachClean(Directory instance) {
+		log.debug("attaching clean Directory instance");
 		try {
 			getCurrentSession().buildLockRequest(LockOptions.NONE).lock(
 					instance);
@@ -194,31 +196,15 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	public static SDirectoryDAO getFromApplicationContext(ApplicationContext ctx) {
-		return (SDirectoryDAO) ctx.getBean("SDirectoryDAO");
+	public static DirectoryDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (DirectoryDAO) ctx.getBean("DirectoryDAO");
 	}
 
 	@Override
-	public boolean addSDir(SDirectory sdir) {
+	public boolean addDir(Directory dir) {
 		// TODO Auto-generated method stub
 		try {
-			if (findByName(sdir.getName()).size() == 0
-					&& findByName(sdir.getName()).size() == 0) {
-				this.save(sdir);
-				return true;
-			}
-		} catch (Exception e) {
-			System.out.println("error:" + e.getMessage());
-			return false;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean deleteSDir(SDirectory sdir) {
-		// TODO Auto-generated method stub
-		try {
-			this.getCurrentSession().delete(sdir);// 主键值
+			this.save(dir);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -226,32 +212,39 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked" })
 	@Override
-	public boolean updateSDir(SDirectory sdir) {
+	public boolean deleteDir(Directory dir) {
 		// TODO Auto-generated method stub
 		try {
-			if (sdir.getId() != null && sdir.getName() != null) {
-				List<SDirectory> sd = (List<SDirectory>) findByName(sdir
-						.getName());
-				boolean tmp = false;
-				if (sd.size() == 0) {
-					tmp = true;
-				} else {
-					if (sd.get(0).getId() == sdir.getId()) {
-						tmp = true;
-					}
+			this.getCurrentSession().delete(dir);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateDir(Directory dir) {
+		// TODO Auto-generated method stub
+		try {
+			if (dir.getId() != null) {
+				String queryString = "update Directory set ";
+				if (dir.getName() != null) {
+					queryString += "name='" + dir.getName() + "',";
 				}
-				if (tmp) {
-					String queryString = "update SDirectory set name='"
-							+ sdir.getName() + "' where id=" + sdir.getId();
-					Query queryObject = getCurrentSession().createQuery(
-							queryString);
-					queryObject.executeUpdate();
-					return true;
-				} else {
-					return false;
+				if (dir.getThemeId() != null) {
+					queryString += "theme_id=" + dir.getThemeId() + ",";
 				}
+				if (dir.getSDirId() != null) {
+					queryString += "s_dir_id=" + dir.getSDirId() + ",";
+				}
+				queryString = queryString
+						.substring(0, queryString.length() - 1);
+				Query queryObject = this.getCurrentSession().createQuery(
+						queryString);
+				queryObject.executeUpdate();
+				return true;
 			} else {
 				return false;
 			}
@@ -262,8 +255,8 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 	}
 
 	@Override
-	public Page getAllSDir(int pageNow) {
+	public Page getAllDir(int pageNow) {
 		// TODO Auto-generated method stub
-		return findAll(pageNow);
+		return this.findAll(pageNow);
 	}
 }

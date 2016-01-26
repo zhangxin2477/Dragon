@@ -10,6 +10,14 @@ var listen_dataList = function(_dataList, event) {
 	}
 };
 
+var list;
+var listen_list = function(_list, event) {
+	list = _list;
+	if (event) {
+		event();
+	}
+};
+
 // table选择
 function sel(tr) {
 	var tb = tr.parentNode;
@@ -19,6 +27,24 @@ function sel(tr) {
 	}
 	tr.style.backgroundColor = "#dff0d8";
 	tr.cells[0].innerText = 1;
+}
+
+function backAjax(params, url){
+	$.ajax({
+		type : "GET",
+		url : url,
+		async : true,
+		data : params,
+		dataType : "json",
+		success : function(result, status, xhr) {
+			if (status == "success") {
+				listen_list(result, loadList);
+			}
+		},
+		error : function(xhr, status, error) {
+			layer.msg("加载失败！");
+		}
+	})
 }
 
 function postAjax(postparams, posturl, index, getparams, geturl, getvalue) {
@@ -97,6 +123,27 @@ function showBox(height, title, btn1, btn2, content, posturl, getparams,
 		yes : function(index) {
 			var postparams = $("form").serialize();
 			postAjax(postparams, posturl, index, getparams, geturl, getvalue)
+		},
+		btn2 : function(index) {
+			layer.close(index);
+		},
+		content : content
+	});
+}
+
+function showTip(height, title, btn1, btn2, content,event){
+	layer.open({
+		type : 1, // page层
+		area : [ '50%', height ],
+		title : title,
+		shade : 0.6, // 遮罩透明度
+		moveType : 1, // 拖拽风格，0是默认，1是传统拖动
+		shift : 1, // 0-6的动画形式，-1不开启
+		btn : [ btn1, btn2 ],
+		yes : function(index) {
+			if(event){
+				event();
+			}
 		},
 		btn2 : function(index) {
 			layer.close(index);
