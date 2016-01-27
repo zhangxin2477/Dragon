@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -128,9 +129,9 @@ public class SDirectoryDAO implements SDirectoryDaoInterface {
 	public List<?> findSdirList() {
 		log.debug("finding all SDirectory instances");
 		try {
-			String queryString = "select sdir.id,sdir.name from SDirectory as sdir,Directory as dir where sdir.id<>dir.SDirId";
-			Query queryObject = getCurrentSession().createQuery(queryString);
-			return queryObject.list();
+			String queryString = "select * from s_directory as sdir LEFT JOIN `directory` as dir ON sdir.id=dir.s_dir_id";
+			SQLQuery query = getCurrentSession().createSQLQuery(queryString);
+			return query.list();
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			System.out.println(re.getMessage());
