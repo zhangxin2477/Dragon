@@ -46,7 +46,7 @@
 				<param name="root">page</param>
 			</result>
 		</action>
-		
+
 		<action name="getthemelist" class="themeAction" method="getThemeList">
 			<result name="success" type="json">
 				<param name="root">list</param>
@@ -54,64 +54,35 @@
 		</action>
 		<!-- end:theme主题 -->
 
-		<!-- start:sdirectory子菜单 -->
-		<action name="addsdir" class="directoryAction" method="addSdir">
+		<!-- start:分类 -->
+		<action name="addclassify" class="classifyAction" method="addClassify">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-
-		<action name="deletesdir" class="directoryAction" method="deleteSdir">
+		<action name="deleteclassify" class="classifyAction" method="deleteClassify">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-
-		<action name="updatesdir" class="directoryAction" method="updateSdir">
+		<action name="updateclassify" class="classifyAction" method="updateClassify">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-
-		<action name="getsdirpage" class="directoryAction" method="getSDirPage">
+		<action name="getclassifypage" class="classifyAction" method="getClassifyPage">
 			<result name="success" type="json">
-				<param name="root">sdir_page</param>
+				<param name="root">pageList</param>
 			</result>
 		</action>
-		<!-- end:sdirectory子菜单 -->
-
-		<!-- start:directory子菜单 -->
-		<action name="adddir" class="directoryAction" method="addDir">
+		<action name="getclassifylist" class="classifyAction" method="getCList">
 			<result name="success" type="json">
-				<param name="root">result</param>
+				<param name="root">classifyList</param>
 			</result>
 		</action>
+		<!-- end:分类 -->
 
-		<action name="deletedir" class="directoryAction" method="deleteDir">
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-
-		<action name="updatedir" class="directoryAction" method="updateDir">
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-
-		<action name="getdirpage" class="directoryAction" method="getDirPage">
-			<result name="success" type="json">
-				<param name="root">dir_page</param>
-			</result>
-		</action>
-
-		<action name="getsdirfordir" class="directoryAction" method="getSdirForDir">
-			<result name="success" type="json">
-				<param name="root">s_list</param>
-			</result>
-		</action>
-		<!-- end:directory -->
-
+		<!-- start:用户 -->
 		<action name="login" class="userAction" method="login">
 			<result name="none">/WEB-INF/web/user/login.jsp</result>
 			<result name="success" type="json">result</result>
@@ -119,8 +90,27 @@
 
 		<action name="register" class="userAction" method="register">
 			<result name="none">/WEB-INF/web/user/register.jsp</result>
-			<result name="success" type="json">result</result>
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
+		<action name="getuserpage" class="userAction" method="getUserPage">
+			<result name="success" type="json">
+				<param name="root">page</param>
+			</result>
+		</action>
+		<action name="changestate" class="userAction" method="changeState">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="deleteuser" class="userAction" method="deleteUser">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- end:用户 -->
 
 		<action name="main" class="userAction" method="index">
 			<result name="success">/WEB-INF/web/main.jsp</result>

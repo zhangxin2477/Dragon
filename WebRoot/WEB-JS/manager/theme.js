@@ -28,9 +28,9 @@ $('#add')
 							"新增主题",
 							"注册",
 							"关闭",
-							"<form style='padding:10px;'><div class='input-group'><span class='input-group-addon' id='basic-addon1'>中文名称</span><input name='theme.nameCn' type='text' class='form-control' placeholder='中文名称' aria-describedby='basic-addon1'></div><br>"
-									+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>英文名称</span><input name='theme.nameEn' type='text' class='form-control' placeholder='英文名称' aria-describedby='basic-addon1'></div><br>"
-									+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>注册码</span><input name='theme.preKey' type='text' class='form-control' placeholder='注册码' aria-describedby='basic-addon1'></div></form>",
+							"<form style='padding:10px;'><div class='input-group'><span class='input-group-addon'>中文名称</span><input name='theme.nameCn' type='text' class='form-control' placeholder='中文名称'></div>"
+									+ "<div class='input-group'><span class='input-group-addon'>英文名称</span><input name='theme.nameEn' type='text' class='form-control' placeholder='英文名称'></div>"
+									+ "<div class='input-group'><span class='input-group-addon'>注册码</span><input name='theme.preKey' type='text' class='form-control' placeholder='注册码'></div></form>",
 							"addtheme", "page.pageNow=", "findalltheme", "1");
 				})
 
@@ -57,10 +57,10 @@ $('#edit')
 								"关闭",
 								"<form style='padding:10px;'><input type='text' name='theme.id' style='display:none;' value='"
 										+ id
-										+ "'/><div class='input-group'><span class='input-group-addon' id='basic-addon1'>中文名称</span><input type='text' class='form-control' placeholder='中文名称' aria-describedby='basic-addon1' value='"
+										+ "'/><div class='input-group'><span class='input-group-addon'>中文名称</span><input type='text' class='form-control' placeholder='中文名称' value='"
 										+ name_cn
-										+ "' name='theme.nameCn'></div><br>"
-										+ "<div class='input-group'><span class='input-group-addon' id='basic-addon1'>英文名称</span><input type='text' class='form-control' placeholder='英文名称' aria-describedby='basic-addon1' value='"
+										+ "' name='theme.nameCn'></div>"
+										+ "<div class='input-group'><span class='input-group-addon'>英文名称</span><input type='text' class='form-control' placeholder='英文名称' value='"
 										+ name_en
 										+ "' name='theme.nameEn'></div></form>",
 								"updatetheme", "page.pageNow", "findalltheme",

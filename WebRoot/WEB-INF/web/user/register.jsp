@@ -24,21 +24,21 @@
 			<div class="panel-body">
 				<form class="bs-example bs-example-form" role="form" >
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">用户名：</span>
+						<span class="input-group-addon" id="basic-addon1">帐号：</span>
 						<input type="text" class="form-control" placeholder="用户名"
-							name="user.account" />
+							name="users.account" />
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon2">密&nbsp;&nbsp;&nbsp;码：</span>
+						<span class="input-group-addon" id="basic-addon2">密码：</span>
 						<input type="password" class="form-control" placeholder="密码"
-							name="user.password" />
+							name="users.password" />
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon2">邮&nbsp;&nbsp;&nbsp;箱：</span>
-						<input type="text" class="form-control" placeholder="邮箱"
-							name="suser.mail" />
+						<span class="input-group-addon" id="basic-addon2">确认密码：</span>
+						<input type="text" class="form-control" placeholder="确认密码"
+							name="users.password" />
 					</div>
 					<br>
 					<button class="btn btn-lg btn-primary btn-block" type="button"

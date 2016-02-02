@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 @SuppressWarnings("deprecation")
-public final class HibernateUtil {
+public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
 	@SuppressWarnings("rawtypes")
@@ -110,11 +110,5 @@ public final class HibernateUtil {
             if (s != null)  
                 s.close();  
         }  
-    }  
-  
-    public static void main(String[] args) {  
-        Session session = null;  
-        session = getSession();  
-        System.out.println(session);  
-    }  
+    }
 }

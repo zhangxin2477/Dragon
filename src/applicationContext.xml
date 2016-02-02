@@ -12,8 +12,7 @@
 	<!-- 第二种方法配置sessionFactory -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url"
-			value="jdbc:mysql://zhangxin2477.vicp.cc:3306/dragon"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/dragon"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
@@ -35,8 +34,9 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.zx.entity.Theme</value>
-				<value>com.zx.entity.SDirectory</value>
-				<value>com.zx.entity.Directory</value>
+				<value>com.zx.entity.Classify</value>
+				<value>com.zx.entity.Users</value>
+				<value>com.zx.entity.SUsers</value>
 			</list>
 		</property>
 	</bean>
@@ -53,8 +53,7 @@
 			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="modify*" propagation="REQUIRED"
 				no-rollback-for="myException" />
-			<tx:method name="del*" propagation="REQUIRED"
-				no-rollback-for="MyException" />
+			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="*" read-only="true" />
@@ -63,7 +62,7 @@
 
 	<!-- 配置参与事务的类 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* com.zx.dao.*.*(..))"
+		<aop:pointcut expression="execution(* com.zx.*.*(..))"
 			id="daoMethod" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoMethod" />
 	</aop:config>
@@ -74,30 +73,34 @@
 		</property>
 	</bean>
 
-	<bean id="SDirectoryDAO" class="com.zx.dao.impl.SDirectoryDAO">
+	<bean id="ClassifyDAO" class="com.zx.dao.impl.ClassifyDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 
-	<bean id="DirectoryDAO" class="com.zx.dao.impl.DirectoryDAO">
+	<bean id="UserDAO" class="com.zx.dao.impl.UserDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
+	
+	<!-- -->
 	<bean id="themeService" class="com.zx.service.impl.ThemeService">
 		<property name="themeDaoInterface">
 			<ref bean="ThemeDAO" />
 		</property>
 	</bean>
 
-	<bean id="directoryService" class="com.zx.service.impl.DirectoryService">
-		<property name="sdirectoryDaoInterface">
-			<ref bean="SDirectoryDAO" />
+	<bean id="classifyService" class="com.zx.service.impl.ClassifyService">
+		<property name="classifyDaoInterface">
+			<ref bean="ClassifyDAO" />
 		</property>
-		<property name="directoryDaoInterface">
-			<ref bean="DirectoryDAO" />
+	</bean>
+	
+	<bean id="userService" class="com.zx.service.impl.UserService">
+		<property name="userDaoInterface">
+			<ref bean="UserDAO" />
 		</property>
 	</bean>
 
@@ -105,15 +108,18 @@
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
 		<property name="themeServiceInterface" ref="themeService" />
 	</bean>
-	<bean id="directoryAction" class="com.zx.action.DirectoryAction"
+	<bean id="classifyAction" class="com.zx.action.ClassifyAction"
 		scope="prototype">
-		<property name="directoryServiceInterface" ref="directoryService" />
+		<property name="classifyServiceInterface" ref="classifyService" />
 	</bean>
-	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype" />
+	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
+	<property name="userServiceInterface" ref="userService"></property>
+	</bean>
 	<bean id="publishAction" class="com.zx.action.PublishAction"
 		scope="prototype" />
 	<bean id="contentAction" class="com.zx.action.ContentAction"
 		scope="prototype" />
 	<bean id="managerAction" class="com.zx.action.ManagerAction"
 		scope="prototype" />
+
 </beans>
