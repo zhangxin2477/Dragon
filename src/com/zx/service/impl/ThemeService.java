@@ -53,4 +53,10 @@ public class ThemeService implements ThemeServiceInterface {
 		return themeDaoInterface.findAll();
 	}
 
+	@Override
+	public List<?> findByNameEn(Object nameEn) {
+		// TODO Auto-generated method stub
+		return themeDaoInterface.findByNameEn(nameEn);
+	}
+
 }

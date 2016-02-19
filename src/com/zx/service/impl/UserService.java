@@ -1,5 +1,7 @@
 package com.zx.service.impl;
 
+import java.util.List;
+
 import com.zx.common.Page;
 import com.zx.dao.UserDaoInterface;
 import com.zx.entity.SUsers;
@@ -23,7 +25,6 @@ public class UserService implements UserServiceInterface {
 	@Override
 	public boolean delete(Users users, SUsers susers) {
 		// TODO Auto-generated method stub
-		System.out.println("user delet1");
 		return this.userDaoInterface.delete(users, susers);
 	}
 
@@ -51,6 +52,18 @@ public class UserService implements UserServiceInterface {
 	public boolean changeState(Users users) {
 		// TODO Auto-generated method stub
 		return this.userDaoInterface.changeState(users);
+	}
+
+	@Override
+	public List<?> getUserInfo(int userID) {
+		// TODO Auto-generated method stub
+		return this.userDaoInterface.getUserInfo(userID);
+	}
+
+	@Override
+	public Users checkUsers(Users users) {
+		// TODO Auto-generated method stub
+		return this.userDaoInterface.checkUsers(users);
 	}
 
 }

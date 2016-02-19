@@ -24,16 +24,23 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="main">首页<span class="sr-only">(current)</span></a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">父级菜单<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">子菜单</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">子菜单</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">子菜单</a></li>
-					</ul></li>
+				<c:forEach items="${classifyList}" var="classify">
+					<c:if test="${classify.classParentid==null}">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">${classify.className}<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<c:forEach items="${classifyList}" var="sub" varStatus="vs">
+									<c:if test="${vs.index==0}"></c:if>
+									<c:if test="${classify.id==sub.classParentid}">
+										<li><a href="#">${sub.className}</a></li>
+										<li role="separator" class="divider"></li>
+									</c:if>
+								</c:forEach>
+							</ul></li>
+					</c:if>
+				</c:forEach>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group input-group">
@@ -44,9 +51,26 @@
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="manager">设置</a></li>
-				<li><a href="register">注册</a></li>
-				<li><a href="login">登录</a></li>
+				<c:choose>
+					<c:when test="${users!=null}">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"><img style="width:20px;height:20px;"
+								class="img-circle image_size_small"
+								src="${path}/WEB-RES/image/default.png" />&nbsp;${users.name}<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="loginout">退出</a></li>
+								<li role="separator"></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="manager">设置</a></li>
+							</ul></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="login">登录</a></li>
+						<li><a href="register">注册</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 	</div>

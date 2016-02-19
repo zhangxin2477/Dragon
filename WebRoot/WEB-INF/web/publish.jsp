@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>发布内容</title>
 <c:import url="/WEB-INF/web/common/common.jsp" />
 <!-- 百度富文本 -->

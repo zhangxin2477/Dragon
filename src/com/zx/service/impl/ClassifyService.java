@@ -49,4 +49,10 @@ public class ClassifyService implements ClassifyServiceInterface {
 		return this.classifyDaoInterface.getClassify(params);
 	}
 
+	@Override
+	public List<Classify> findByThemeId(Object themeId) {
+		// TODO Auto-generated method stub
+		return this.classifyDaoInterface.findByThemeId(themeId);
+	}
+
 }

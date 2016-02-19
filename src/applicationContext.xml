@@ -23,7 +23,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop><!-- MySQL5InnoDBDialect -->
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.autoReconnect">true</prop>
@@ -37,6 +37,7 @@
 				<value>com.zx.entity.Classify</value>
 				<value>com.zx.entity.Users</value>
 				<value>com.zx.entity.SUsers</value>
+				<value>com.zx.entity.Article</value>
 			</list>
 		</property>
 	</bean>
@@ -72,19 +73,22 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
 	<bean id="ClassifyDAO" class="com.zx.dao.impl.ClassifyDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
 	<bean id="UserDAO" class="com.zx.dao.impl.UserDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+	<bean id="ArticleDAO" class="com.zx.dao.impl.ArticleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
 	<!-- -->
 	<bean id="themeService" class="com.zx.service.impl.ThemeService">
 		<property name="themeDaoInterface">
@@ -97,7 +101,7 @@
 			<ref bean="ClassifyDAO" />
 		</property>
 	</bean>
-	
+
 	<bean id="userService" class="com.zx.service.impl.UserService">
 		<property name="userDaoInterface">
 			<ref bean="UserDAO" />
@@ -105,6 +109,11 @@
 	</bean>
 
 	<!-- spring管理struts2的Action prototype解决单例问题 -->
+	<bean id="mainAction" class="com.zx.action.MainAction" scope="prototype">
+		<property name="classifyServiceInterface" ref="classifyService"></property>
+		<property name="themeServiceInterface" ref="themeService"></property>
+	</bean>
+
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
 		<property name="themeServiceInterface" ref="themeService" />
 	</bean>
@@ -113,13 +122,15 @@
 		<property name="classifyServiceInterface" ref="classifyService" />
 	</bean>
 	<bean id="userAction" class="com.zx.action.UserAction" scope="prototype">
-	<property name="userServiceInterface" ref="userService"></property>
+		<property name="userServiceInterface" ref="userService" />
+		<property name="classifyServiceInterface" ref="classifyService" />
 	</bean>
 	<bean id="publishAction" class="com.zx.action.PublishAction"
 		scope="prototype" />
 	<bean id="contentAction" class="com.zx.action.ContentAction"
 		scope="prototype" />
 	<bean id="managerAction" class="com.zx.action.ManagerAction"
-		scope="prototype" />
-
+		scope="prototype">
+		<property name="userServiceInterface" ref="userService" />
+	</bean>
 </beans>

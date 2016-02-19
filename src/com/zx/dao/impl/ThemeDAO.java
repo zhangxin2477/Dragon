@@ -289,7 +289,9 @@ public class ThemeDAO implements ThemeDaoInterface {
 	public boolean deleteTheme(Theme theme) {
 		// TODO Auto-generated method stub
 		try {
-			this.getCurrentSession().delete(theme);// 主键值
+			String sql="delete Theme where id="+theme.getId();
+			Query query=this.getCurrentSession().createQuery(sql);
+			query.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

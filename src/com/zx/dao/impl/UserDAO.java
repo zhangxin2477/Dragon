@@ -1,5 +1,8 @@
 package com.zx.dao.impl;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -51,11 +54,13 @@ public class UserDAO implements UserDaoInterface {
 	public boolean delete(Users users, SUsers susers) {
 		// TODO Auto-generated method stub
 		try {
-			System.out.println("user delet2");
-			//String su=
-			this.getCurrentSession().delete("from SUsers where id="+susers.getId());
-			System.out.println("user delet3");
-			this.getCurrentSession().delete("from Users where id="+users.getId());
+			String sql = "delete SUsers where id=" + susers.getId();
+			Query query = this.getCurrentSession().createQuery(sql);
+			query.executeUpdate();
+
+			sql = "delete Users where id=" + users.getId();
+			query = this.getCurrentSession().createQuery(sql);
+			query.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			System.out.println("user delete error:" + e.getMessage());
@@ -73,11 +78,10 @@ public class UserDAO implements UserDaoInterface {
 	public Page getUserPage(int pageNow) {
 		// TODO Auto-generated method stub
 		Page page = new Page();
-		String queryString = "SELECT users.id,users.theme_id,theme.name_cn,users.account,users.`name`,"
-				+ "users.`password`,users.`level`,users.registertime,users.logintime,users.active,"
+		String queryString = "SELECT users.id,users.account,users.`name`,users.`password`,users.`level`,users.registertime,users.logintime,users.active,"
 				+ "s_users.openid,s_users.type,s_users.age,s_users.sex,s_users.mail,s_users.phone,"
 				+ "s_users.address,s_users.education,s_users.school,s_users.id AS susersid "
-				+ "FROM users LEFT JOIN (s_users CROSS JOIN theme) ON (users.id=s_users.p_users_id AND users.theme_id=theme.id)";
+				+ "FROM users LEFT JOIN s_users  ON users.id=s_users.p_users_id";
 		SQLQuery query = this.getCurrentSession().createSQLQuery(queryString);
 		page.setTotalCount(query.list().size());
 		page.setPageNow(pageNow);
@@ -101,6 +105,51 @@ public class UserDAO implements UserDaoInterface {
 		} catch (Exception e) {
 			System.out.println("user active errir:" + e.getMessage());
 			return false;
+		}
+	}
+
+	@Override
+	public List<?> getUserInfo(int userID) {
+		// TODO Auto-generated method stub
+		try {
+			String queryString = "SELECT users.id,users.account,users.`name`,users.`password`,users.`level`,users.registertime,users.logintime,users.active,"
+					+ "s_users.openid,s_users.type,s_users.age,s_users.sex,s_users.mail,s_users.phone,"
+					+ "s_users.address,s_users.education,s_users.school,s_users.id AS susersid "
+					+ "FROM users LEFT JOIN s_users ON users.id=s_users.p_users_id where users.id="
+					+ userID;
+			SQLQuery query = this.getCurrentSession().createSQLQuery(
+					queryString);
+			return query.list();
+		} catch (Exception e) {
+			System.out.println("getuserinfo error:" + e.getMessage());
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Users checkUsers(Users users) {
+		// TODO Auto-generated method stub
+		try {
+			String queryString = "from Users as model where model.account= ? and model.password= ?";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setParameter(0, users.getAccount());
+			queryObject.setParameter(1, users.getPassword());
+			List<Users> results = queryObject.list();
+			if (results.size() > 0) {
+				Timestamp tt = new Timestamp(System.currentTimeMillis());
+				queryString = "update Users as model set model.logintime= ? where model.account= ?";
+				Query query = this.getCurrentSession().createQuery(queryString);
+				query.setParameter(0, tt);
+				query.setParameter(1, users.getAccount());
+				query.executeUpdate();
+				return (Users) results.get(0);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			System.out.println("getusers error:" + e.getMessage());
+			return null;
 		}
 	}
 }

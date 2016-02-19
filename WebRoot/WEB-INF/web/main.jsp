@@ -18,7 +18,7 @@
 <body>
 	<c:import url="/WEB-INF/web/common/top.jsp" />
 
-	<div class="container">
+	<div class="container" style="height: 100%;">
 		<div class="row row-offcanvas row-offcanvas-right">
 
 			<div class="col-xs-12 col-sm-9">
@@ -68,7 +68,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">用户</div>
 					<div class="panel-body">
-						<div>用户：XX</div>
+						<div>用户：${users.name}</div>
 						<div>等级：XX</div>
 					</div>
 				</div>

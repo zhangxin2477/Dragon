@@ -1,12 +1,15 @@
 package com.zx.action;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.zx.common.Page;
 import com.zx.entity.SUsers;
-import com.zx.entity.Theme;
 import com.zx.entity.Users;
+import com.zx.service.ClassifyServiceInterface;
 import com.zx.service.UserServiceInterface;
 
 public class UserAction extends ActionSupport {
@@ -14,13 +17,40 @@ public class UserAction extends ActionSupport {
 	private static final long serialVersionUID = -7028181918413153024L;
 	private String result;
 	private UserServiceInterface userServiceInterface;
+	private ClassifyServiceInterface classifyServiceInterface;
 	private Page page;
 	private Users users;
 	private SUsers susers;
-	private Theme theme;
+	private List<?> userList;
 
 	public String login() {
 		return NONE;
+	}
+
+	public String loginOut() {
+		ServletActionContext.getRequest().getSession().removeAttribute("user");
+		return NONE;
+	}
+
+	public String checkUser() {
+		try {
+			if (users != null) {
+				users = this.userServiceInterface.checkUsers(users);
+				if (users != null && users.getId() != null) {
+					ServletActionContext.getRequest().getSession()
+							.setAttribute("user", users);
+					result = SUCCESS;
+				} else {
+					result = ERROR;
+				}
+			} else {
+				result = NONE;
+			}
+		} catch (Exception e) {
+			System.out.println("login error:" + e.getMessage());
+			result = ERROR;
+		}
+		return SUCCESS;
 	}
 
 	public String register() {
@@ -28,7 +58,6 @@ public class UserAction extends ActionSupport {
 			if (users != null && users.getAccount() != null
 					&& users.getPassword() != null) {
 				users.setName(users.getAccount());
-				users.setThemeId(2);
 				Timestamp tt = new Timestamp(System.currentTimeMillis());
 				users.setRegistertime(tt);
 				if (susers == null) {
@@ -58,6 +87,17 @@ public class UserAction extends ActionSupport {
 		} catch (Exception e) {
 			System.out.println("user action error:" + e.getMessage());
 			page = null;
+		}
+		return SUCCESS;
+	}
+
+	public String getUserInfo() {
+		try {
+			if (users != null && users.getId() != null) {
+				userList = this.userServiceInterface.getUserInfo(3);
+			}
+		} catch (Exception e) {
+			System.out.println("gui error:" + e.getMessage());
 		}
 		return SUCCESS;
 	}
@@ -97,6 +137,16 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String index() {
+		users = (Users) ServletActionContext.getRequest().getSession()
+				.getAttribute("user");
+		String namespace = ServletActionContext.getActionMapping()
+				.getNamespace();
+		ServletActionContext
+				.getRequest()
+				.getSession()
+				.setAttribute(
+						"themeName",
+						namespace.substring(1, namespace.length()));
 		return SUCCESS;
 	}
 
@@ -141,12 +191,20 @@ public class UserAction extends ActionSupport {
 		this.susers = susers;
 	}
 
-	public Theme getTheme() {
-		return theme;
+	public List<?> getUserList() {
+		return userList;
 	}
 
-	public void setTheme(Theme theme) {
-		this.theme = theme;
+	public void setUserList(List<?> userList) {
+		this.userList = userList;
+	}
+
+	public ClassifyServiceInterface getClassifyServiceInterface() {
+		return classifyServiceInterface;
+	}
+
+	public void setClassifyServiceInterface(ClassifyServiceInterface classifyServiceInterface) {
+		this.classifyServiceInterface = classifyServiceInterface;
 	}
 
 }

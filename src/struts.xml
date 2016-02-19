@@ -7,7 +7,7 @@
 	<!-- 由Spring来代理控制层 -->
 	<constant name="struts.objectFactory" value="spring" />
 
-	<package name="struts2" namespace="/" extends="json-default">
+	<package name="struts2" namespace="/news" extends="json-default">
 		<result-types>
 			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
 		</result-types>
@@ -85,9 +85,13 @@
 		<!-- start:用户 -->
 		<action name="login" class="userAction" method="login">
 			<result name="none">/WEB-INF/web/user/login.jsp</result>
+		</action>
+		<action name="checkuser" class="userAction" method="checkUser">
 			<result name="success" type="json">result</result>
 		</action>
-
+		<action name="loginout" class="userAction" method="loginOut">
+			<result name="none">/WEB-INF/web/main.jsp</result>
+		</action>
 		<action name="register" class="userAction" method="register">
 			<result name="none">/WEB-INF/web/user/register.jsp</result>
 			<result name="success" type="json">
@@ -104,15 +108,21 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		
+
 		<action name="deleteuser" class="userAction" method="deleteUser">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
+
+		<action name="getuserinfo" class="userAction" method="getUserInfo">
+			<result name="success" type="json">
+				<param name="root">userList</param>
+			</result>
+		</action>
 		<!-- end:用户 -->
 
-		<action name="main" class="userAction" method="index">
+		<action name="main" class="mainAction" method="main">
 			<result name="success">/WEB-INF/web/main.jsp</result>
 		</action>
 

@@ -19,11 +19,9 @@
 				<tr>
 					<th style="display:none;">选择</th>
 					<th style="display:none;">id</th>
-					<th style="display:none;">theme_id</th>
 					<th>序号</th>
 					<th>账号</th>
 					<th>昵称</th>
-					<th>主题</th>
 					<th>类型</th>
 					<th>状态</th>
 					<th style="display:none;">sub_id</th>

@@ -210,7 +210,9 @@ public class ClassifyDAO implements ClassifyDaoInterface {
 	public boolean deleteClassify(Classify classify) {
 		// TODO Auto-generated method stub
 		try {
-			this.getCurrentSession().delete(classify);
+			String sql = "delete Classify where id=" + classify.getId();
+			Query query = this.getCurrentSession().createQuery(sql);
+			query.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			System.out.println("deleteClassify:" + e.getMessage());
@@ -258,7 +260,8 @@ public class ClassifyDAO implements ClassifyDaoInterface {
 		// TODO Auto-generated method stub
 		try {
 			String queryString = "select * from classify" + params;
-			SQLQuery queryObject = getCurrentSession().createSQLQuery(queryString);
+			SQLQuery queryObject = getCurrentSession().createSQLQuery(
+					queryString);
 			queryObject.addEntity(Classify.class);
 			return queryObject.list();
 		} catch (Exception e) {

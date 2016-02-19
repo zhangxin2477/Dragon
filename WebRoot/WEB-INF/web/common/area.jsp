@@ -9,7 +9,7 @@
 		<select id="s_province" name="s_province"></select> <select
 			id="s_city" name="s_city"></select>   <select id="s_county"
 			name="s_county"></select>
-		<script class="resources library" src="area.js" type="text/javascript"></script>
+		<script class="resources library" src="${path}/WEB-PLUGIN/city/area.js" type="text/javascript"></script>
 
 		<script type="text/javascript">
 			_init_area();

@@ -25,14 +25,14 @@
 				<form class="bs-example bs-example-form" role="form" >
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">用户名：</span>
-						<input id="nametxt" type="text" class="form-control" placeholder="Username"
-							name="user.account" />
+						<input id="nametxt" type="text" class="form-control" placeholder="用户名"
+							name="users.account" />
 					</div>
 					<br>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon2">密&nbsp;&nbsp;&nbsp;码：</span>
-						<input id="pwtxt" type="password" class="form-control" placeholder="Password"
-							name="user.password" />
+						<input id="pwtxt" type="password" class="form-control" placeholder="密码"
+							name="users.password" />
 					</div>
 
 					<div class="checkbox">

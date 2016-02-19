@@ -21,7 +21,6 @@ public class Users implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -6912008424840324032L;
 	private Integer id;
-	private Integer themeId;
 	private String account;
 	private String name;
 	private String password;
@@ -39,7 +38,6 @@ public class Users implements java.io.Serializable {
 	/** minimal constructor */
 	public Users(Integer themeId, String account, String name, String password,
 			Integer active) {
-		this.themeId = themeId;
 		this.account = account;
 		this.name = name;
 		this.password = password;
@@ -47,10 +45,9 @@ public class Users implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Users(Integer themeId, String account, String name, String password,
+	public Users(String account, String name, String password,
 			Integer level, Timestamp registertime, Timestamp logintime,
 			Integer active) {
-		this.themeId = themeId;
 		this.account = account;
 		this.name = name;
 		this.password = password;
@@ -70,15 +67,6 @@ public class Users implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	@Column(name = "theme_id", nullable = false)
-	public Integer getThemeId() {
-		return this.themeId;
-	}
-
-	public void setThemeId(Integer themeId) {
-		this.themeId = themeId;
 	}
 
 	@Column(name = "account", nullable = false, length = 20)

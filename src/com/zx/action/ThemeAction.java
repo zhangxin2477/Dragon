@@ -52,7 +52,7 @@ public class ThemeAction extends ActionSupport {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			result = e.getMessage();
+			result = ERROR;
 		}
 		return Action.SUCCESS;
 	}
