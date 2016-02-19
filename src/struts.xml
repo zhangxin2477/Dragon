@@ -122,6 +122,13 @@
 		</action>
 		<!-- end:用户 -->
 
+		<!-- 内容 -->
+		<action name="getarticlepage" class="articleAction" method="getArticlePage">
+			<result name="successs" type="json">
+				<param name="root">page</param>
+			</result>
+		</action>
+
 		<action name="main" class="mainAction" method="main">
 			<result name="success">/WEB-INF/web/main.jsp</result>
 		</action>

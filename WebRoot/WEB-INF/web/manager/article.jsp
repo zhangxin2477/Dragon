@@ -18,9 +18,10 @@
 			<thead>
 				<tr>
 					<th style="display:none;">选择</th>
+					<th style="display:none;">id</th>
 					<th>序号</th>
 					<th>标题</th>
-					<th>所属菜单</th>
+					<th>所属分类</th>
 					<th>发布时间</th>
 					<th>更新时间</th>
 					<th>被赞次数</th>
@@ -29,25 +30,11 @@
 					<th>状态</th>
 				</tr>
 			</thead>
-			<tbody id="body_list">
-				<c:forEach var="s" begin="1" end="5">
-					<tr onclick="sel(this)">
-						<td style="display:none;">0</td>
-						<th scope="row">${s}</th>
-						<td>XX</td>
-						<td>XX</td>
-						<td>2016年1月20日 15:23:45</td>
-						<td>2016年1月20日 15:23:39</td>
-						<td>0</td>
-						<td>0</td>
-						<td>私有</td>
-						<td>未发布</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+			<tbody id="article"></tbody>
 		</table>
 		<div class="page" style="text-align:center;"></div>
 	</div>
 </div>
 
+<script src="${path}/WEB-JS/common/common.js"></script>
 <script src="${path}/WEB-JS/manager/article.js"></script>

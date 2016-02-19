@@ -108,10 +108,16 @@
 		</property>
 	</bean>
 
+	<bean id="articleService" class="com.zx.service.impl.ArticleService">
+		<property name="articleDaoInterface">
+			<ref bean="ArticleDAO" />
+		</property>
+	</bean>
+
 	<!-- spring管理struts2的Action prototype解决单例问题 -->
 	<bean id="mainAction" class="com.zx.action.MainAction" scope="prototype">
-		<property name="classifyServiceInterface" ref="classifyService"></property>
-		<property name="themeServiceInterface" ref="themeService"></property>
+		<property name="classifyServiceInterface" ref="classifyService" />
+		<property name="themeServiceInterface" ref="themeService" />
 	</bean>
 
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
@@ -125,6 +131,11 @@
 		<property name="userServiceInterface" ref="userService" />
 		<property name="classifyServiceInterface" ref="classifyService" />
 	</bean>
+	<bean id="articleAction" class="com.zx.action.ArticleAction"
+		scope="prototype">
+		<property name="articleServiceInterface" ref="articleService" />
+	</bean>
+
 	<bean id="publishAction" class="com.zx.action.PublishAction"
 		scope="prototype" />
 	<bean id="contentAction" class="com.zx.action.ContentAction"
