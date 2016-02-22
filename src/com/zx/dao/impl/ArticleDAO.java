@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -205,13 +206,13 @@ public class ArticleDAO implements ArticleDaoInterface {
 
 	@Override
 	public boolean update(int id, int classify, String title, String content,
-			int limit) {
+			int property) {
 		// TODO Auto-generated method stub
 		try {
 			Timestamp updatetime = new Timestamp(System.currentTimeMillis());
 			Object[] params = new Object[] { classify, title, content,
-					updatetime, limit, id };
-			String sql = "update Article a set a.classifyId=?,a.title=?,a.content=?,a.updatetime=?,a.limit=? where a.id=?";
+					updatetime, property, id };
+			String sql = "update Article a set a.classifyId=?,a.title=?,a.content=?,a.updatetime=?,a.property=? where a.id=?";
 			Query query = this.getCurrentSession().createQuery(sql);
 			for (int i = 0; i < params.length; i++) {
 				query.setParameter(i, params[i]);
@@ -255,8 +256,8 @@ public class ArticleDAO implements ArticleDaoInterface {
 		// TODO Auto-generated method stub
 		Page page = new Page();
 		try {
-			String queryString = "from Article";
-			Query query = getCurrentSession().createQuery(queryString);
+			String queryString = "SELECT article.*,classify.class_name FROM article LEFT JOIN classify ON article.classify_id=classify.id";
+			SQLQuery query = getCurrentSession().createSQLQuery(queryString);
 			page.setTotalCount(query.list().size());
 			page.setPageNow(pageNow);
 			int pageSize = page.getPageSize();
@@ -269,5 +270,25 @@ public class ArticleDAO implements ArticleDaoInterface {
 			return null;
 		}
 		return page;
+	}
+
+	@Override
+	public boolean changeState(int state, int id) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "update Article a set a.state=? where a.id=?";
+			Query query = this.getCurrentSession().createQuery(sql);
+			query.setParameter(0, state);
+			query.setParameter(1, id);
+			int result = query.executeUpdate();
+			if (result > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println("article changestate error:" + e.getMessage());
+			return false;
+		}
 	}
 }

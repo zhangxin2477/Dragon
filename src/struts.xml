@@ -122,22 +122,38 @@
 		</action>
 		<!-- end:用户 -->
 
-		<!-- 内容 -->
+		<!-- start:内容 -->
+		<action name="addarticle" class="articleAction" method="addArticle">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		<action name="getarticlepage" class="articleAction" method="getArticlePage">
-			<result name="successs" type="json">
+			<result name="success" type="json">
 				<param name="root">page</param>
 			</result>
 		</action>
+		<action name="changearticlestate" class="articleAction" method="changeState">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="deletearticle" class="articleAction" method="deleteArticle">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- end:内容 -->
 
 		<action name="main" class="mainAction" method="main">
 			<result name="success">/WEB-INF/web/main.jsp</result>
 		</action>
 
-		<action name="publish" class="publishAction" method="PublishInit">
+		<action name="publish" class="articleAction" method="PublishInit">
 			<result name="success">/WEB-INF/web/publish.jsp</result>
 		</action>
 
-		<action name="content" class="contentAction" method="GetContentDetail">
+		<action name="content" class="articleAction" method="GetContentDetail">
 			<result name="success">/WEB-INF/web/content.jsp</result>
 		</action>
 

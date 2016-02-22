@@ -16,6 +16,6 @@ laypage({
 	next : '下一页', // 若不显示，设置false即可
 	hash : true, // 开启hash
 	jump : function(obj) { // 触发分页后的回调
-		
+
 	}
 });

@@ -17,9 +17,9 @@ public class ArticleService implements ArticleServiceInterface {
 
 	@Override
 	public boolean update(int id, int classify, String title, String content,
-			int limit) {
+			int property) {
 		// TODO Auto-generated method stub
-		return this.articleDaoInterface.update(id, classify, title, content, limit);
+		return this.articleDaoInterface.update(id, classify, title, content, property);
 	}
 
 	@Override
@@ -40,6 +40,12 @@ public class ArticleService implements ArticleServiceInterface {
 
 	public void setArticleDaoInterface(ArticleDaoInterface articleDaoInterface) {
 		this.articleDaoInterface = articleDaoInterface;
+	}
+
+	@Override
+	public boolean changeState(int state, int id) {
+		// TODO Auto-generated method stub
+		return this.articleDaoInterface.changeState(state, id);
 	}
 
 }

@@ -17,7 +17,6 @@
 
 <body>
 	<c:import url="/WEB-INF/web/common/top.jsp" />
-
 	<div class="container" style="height: 100%;">
 		<div class="row row-offcanvas row-offcanvas-right">
 
@@ -27,10 +26,10 @@
 						data-toggle="offcanvas">更多信息</button>
 				</p>
 
-				<div class="jumbotron">最新内容</div>
+				<div class="jumbotron">最新内容${page.totalCount}</div>
 
-				<div class="list-group">
-					<c:forEach var="s" begin="1" end="20">
+				<div class="list-group" id="main_article">
+					<c:forEach items="${page.dataList}" var="i">
 						<div class="list-group-item">
 							<span class="badge">0</span>
 							<table>
@@ -40,7 +39,7 @@
 												class="img-circle image_size_small" alt="Brand"
 												src="${path}/WEB-RES/image/default.png" /></a></td>
 										<td style="padding-left:15px;"><a href="content"
-											class="list-group-item-heading" style="font-size:20px;">${s}0000000</a>
+											class="list-group-item-heading" style="font-size:20px;">${page.dataList[i][3]}0000000</a>
 											<ol class="list-group-item-text breadcrumb"
 												style="background-color:#FFFFFF">
 												<li><a href="#">用户</a></li>
@@ -102,7 +101,7 @@
 
 		</div>
 	</div>
-
+	<script src="${path}/WEB-JS/common/common.js"></script>
 	<script src="${path}/WEB-JS/main.js"></script>
 	<c:import url="/WEB-INF/web/common/bottom.jsp"></c:import>
 </body>

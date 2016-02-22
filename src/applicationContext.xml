@@ -118,6 +118,7 @@
 	<bean id="mainAction" class="com.zx.action.MainAction" scope="prototype">
 		<property name="classifyServiceInterface" ref="classifyService" />
 		<property name="themeServiceInterface" ref="themeService" />
+		<property name="articleServiceInterface" ref="articleService" />
 	</bean>
 
 	<bean id="themeAction" class="com.zx.action.ThemeAction" scope="prototype">
@@ -135,11 +136,6 @@
 		scope="prototype">
 		<property name="articleServiceInterface" ref="articleService" />
 	</bean>
-
-	<bean id="publishAction" class="com.zx.action.PublishAction"
-		scope="prototype" />
-	<bean id="contentAction" class="com.zx.action.ContentAction"
-		scope="prototype" />
 	<bean id="managerAction" class="com.zx.action.ManagerAction"
 		scope="prototype">
 		<property name="userServiceInterface" ref="userService" />

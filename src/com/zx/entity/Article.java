@@ -27,7 +27,7 @@ public class Article implements java.io.Serializable {
 	private String content;
 	private Timestamp newtime;
 	private Timestamp updatetime;
-	private Integer limit;
+	private Integer property;
 	private Integer praisecount;
 	private Integer readcount;
 	private Integer state;
@@ -48,14 +48,14 @@ public class Article implements java.io.Serializable {
 	/** full constructor */
 	public Article(Integer classifyId, Integer userId, String title,
 			String content, Timestamp newtime, Timestamp updatetime,
-			Integer limit, Integer praisecount, Integer readcount, Integer state) {
+			Integer property, Integer praisecount, Integer readcount, Integer state) {
 		this.classifyId = classifyId;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
 		this.newtime = newtime;
 		this.updatetime = updatetime;
-		this.limit = limit;
+		this.property = property;
 		this.praisecount = praisecount;
 		this.readcount = readcount;
 		this.state = state;
@@ -127,13 +127,13 @@ public class Article implements java.io.Serializable {
 		this.updatetime = updatetime;
 	}
 
-	@Column(name = "limit")
-	public Integer getLimit() {
-		return this.limit;
+	@Column(name = "property")
+	public Integer getProperty() {
+		return this.property;
 	}
 
-	public void setLimit(Integer limit) {
-		this.limit = limit;
+	public void setProperty(Integer property) {
+		this.property = property;
 	}
 
 	@Column(name = "praisecount")
